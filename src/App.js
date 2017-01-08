@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
+
 export default class App extends Component {
   render() {
-    return (
-      <h1>Hello, world.</h1>
+    return (	
+
+      <div>
+      		<h1> Here is the first div test </h1>
+      		<p>	Here is a paragraph tag </p>
+      	</div>
     );
   }
 }

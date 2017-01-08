@@ -6,9 +6,7 @@ export default class App extends Component {
     return (	
 
       <div>
-      		<h1> Here is the first div test </h1>
-      		<p>	Here is a paragraph tag </p>
-      		{this.props.children}
+      		Something Goes here 
       	</div>
     );
   }

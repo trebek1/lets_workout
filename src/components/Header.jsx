@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 
 export default class Header extends Component {
-  	
-
-
   	render() {
     return (
     	<div>	
-    		<i className="icon fa fa-home"></i>
+    		<img className="icon home-button" src={require("../../assets/media/stock/barbell.png")}/>
 	        <div className="header">
-	        	
 	      		<div className="title">Let&apos;s Workout!</div>
 	      		<ul className="nav clearfix">
 		      	 	<li className="item"><a href="#">Login</a></li>
@@ -17,6 +13,8 @@ export default class Header extends Component {
 		      	 	<li className="item"><a className=" selected" href="#">Home</a></li>
 		      	 	<li className="item"><a href="#">Log</a></li>
 		      	 	<li className="item"><a href="#">Compare</a></li>
+		      	 	<li className="item"><a href="#">Profile</a></li>
+		      	 	<li className="item"><a href="#">What to Eat</a></li>
 	      	 	</ul>
 	      	 </div>
 	      	 

@@ -22,9 +22,9 @@ ul{
 
 
 .app-wrapper{
-	margin: 0 auto;; 
-	background: orange;
-	height: 2000px;
+	margin: 0 auto;
+	background: #ffdb99;
+	height: 1050px;
 	width: 100%;
 }
 
@@ -79,15 +79,9 @@ ul{
 }
 
 .content{
-	height: 1800px;
+	height: 700px;
 	text-align: center;
 	padding: 20px;
-}
-
-.clearfix:after{
-	content: "alex";
-	visibility: hidden;
-	clear: both;
 }
 
 .footer{
@@ -98,8 +92,25 @@ ul{
 
 }
 
-i:hover{
+.home-button:hover{
 	background: lightgray;
+}
+
+.pillar{
+	font-size: 32px;
+}
+
+.symbol{
+	font-size: 35px;
+}
+
+.symbol-img{
+	height: 35px;
+	width: 35px;
+}
+
+.pillar-container{
+	padding: 30px 0px;
 }
 
 .icon{

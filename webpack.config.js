@@ -25,13 +25,8 @@ module.exports = {
     { test: /\.jsx$/, loaders: ["react-hot", "jsx-loader"], include: path.join(__dirname, "src") },
     {test: /\.jsx?$/, loader: 'babel-loader'},
     { test: /\.css$/, loader: "style-loader!css-loader" },
-    {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-            'file?hash=sha512&digest=hex&name=[hash].[ext]',
-            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
-    },
+    
+    { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
      /** font-awesome */
             {
                 test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,

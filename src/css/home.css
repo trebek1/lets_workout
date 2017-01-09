@@ -1,3 +1,41 @@
-.header{
-	background: orange;
+html{
+	background: grey;
 }
+
+.app-wrapper{
+	margin: 0 auto;; 
+	background: orange;
+	height: 2000px;
+	width: 100%;
+}
+
+.header{
+	height: 100px;
+	background: grey;
+	text-align: center;
+	vertical-align: center;
+	line-height: 100px;
+	font-family: "Avenir Next", Roboto, sans-serf; 
+	font-size: 30px;
+
+}
+
+.content, .footer{
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+
+.content{
+	height: 1800px;
+	background-image: url('../../assets/rain.gif');
+	background-repeat: no-repeat;
+}
+
+.footer{
+	height: 100px;
+	background: black;
+	color: white;
+
+}
+
+

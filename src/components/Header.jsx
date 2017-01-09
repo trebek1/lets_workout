@@ -7,7 +7,9 @@ export default class Header extends Component {
   	render() {
     return (
     	<div>	
+    		<i className="icon fa fa-home"></i>
 	        <div className="header">
+	        	
 	      		<div className="title">Let&apos;s Workout!</div>
 	      		<ul className="nav clearfix">
 		      	 	<li className="item"><a href="#">Login</a></li>

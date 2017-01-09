@@ -7,7 +7,7 @@ export default class Wrapper extends Component {
     return (
         <div className="app-wrapper">
 	      	<Header/>
-	      		<div className="content">
+	      		<div className="content smooth">
 	      			{this.props.children}
 	      		</div>
 	      	<Footer/>

@@ -2,6 +2,24 @@ html{
 	background: grey;
 }
 
+a{
+	text-decoration: none;
+}
+
+li{
+	list-style: none;
+}
+
+ul{
+	margin: 0px;
+	padding: 0px;
+}
+
+.item a{
+	color: white;
+}
+
+
 .app-wrapper{
 	margin: 0 auto;; 
 	background: orange;
@@ -10,14 +28,43 @@ html{
 }
 
 .header{
-	height: 100px;
+	height: 200px;
 	background: grey;
 	text-align: center;
 	vertical-align: center;
 	line-height: 100px;
 	font-family: "Avenir Next", Roboto, sans-serf; 
-	font-size: 30px;
+}
 
+.header .nav{
+	height: 50px;
+}
+
+.header .nav .item{
+	font-size: 20px;
+	display: inline-block;
+	padding: 5px;
+	float: left;
+}
+
+.item a:hover{
+	background-color: black;
+}
+
+.item a:active{
+	color: FireBrick;
+
+
+}
+
+
+.item .selected{
+	background-color: black;
+
+}
+
+.header .title{
+	font-size: 40px;
 }
 
 .content, .footer{
@@ -27,12 +74,11 @@ html{
 
 .content{
 	height: 1800px;
-	background-image: url('../../assets/rain.gif');
-	background-repeat: no-repeat;
+
 }
 
 .footer{
-	height: 100px;
+	height: 200px;
 	background: black;
 	color: white;
 

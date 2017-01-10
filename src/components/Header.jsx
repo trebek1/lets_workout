@@ -7,7 +7,7 @@ export default class Header extends Component {
     		<a href="/"><img href="/home" className="icon home-button" src={require("../../assets/media/stock/barbell.png")}></img></a>
 	        <div className="header">
 	      		<div className="title">Let&apos;s Workout!</div>
-	      		<ul className="nav clearfix">
+	      		<ul className="nav">
 		      	 	<li className="item"><a href="/login">Login</a></li>
 		      	 	<li className="item"><a href="/signup">Sign Up</a></li>
 		      	 	<li className="item"><a className=" selected" href="/">Home</a></li>

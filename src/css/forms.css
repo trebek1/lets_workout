@@ -1,0 +1,23 @@
+input{
+	border: 1px solid #999;
+	display: block;
+	height: 50px;
+	width: 300px;
+	padding: 5px;
+	margin: 10px;
+	border-radius: 10px;
+	font-size: 20px;
+}
+form{
+	display: inline-block;
+	margin: auto;
+}
+.form-container{
+	display: block;
+	text-align: center;
+}
+
+.form-title{
+	font-size: 35px;
+	margin: 20px;
+}

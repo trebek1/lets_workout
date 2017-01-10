@@ -6,23 +6,18 @@ export default class Header extends Component {
   	constructor(props){
   		super(props); 
   		this.selectCategory = this.selectCategory.bind(this); 
-
   	}
 
   	selectCategory(event){
   		document.getElementsByClassName('selected')[0].className = ""; 
   		if(event.target.className === 'icon home-button'){	
-  			document.getElementsByName('home')[0].className = "selected"; 
-  			
+  			document.getElementsByName('home')[0].className = "selected";   			
   		}else{
   			event.target.className += " selected"; 	
   		}
-  		
   	}
 
-
   	render() {
-    
     return (
     	<div>	
     		<Link onClick={this.selectCategory} to="/"><img href="/home" className="icon home-button" src={require("../../assets/media/stock/barbell.png")}></img></Link>

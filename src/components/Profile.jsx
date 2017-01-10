@@ -16,7 +16,6 @@ export default class Profile extends Component {
 	      			<div className="field-container"><div className="title"> Age: </div> <div className="field"> 26</div> </div>
 	      		</div>
 	      		</div>
-	      	
 	      	</div>
 
       		<div className="profile-content-container-right">

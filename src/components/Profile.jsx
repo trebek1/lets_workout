@@ -23,7 +23,7 @@ export default class Profile extends Component {
       	 		Some Content here
       	 	</div>	
       	 </div>
-      	 	<div class="bottom-container">
+      	 	<div className="bottom-container">
 	      	 	<div className="metrics">
 	      	 		Metrics 
 	      	 	</div>

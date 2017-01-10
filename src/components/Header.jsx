@@ -11,7 +11,13 @@ export default class Header extends Component {
 
   	selectCategory(event){
   		document.getElementsByClassName('selected')[0].className = ""; 
-  		event.target.className += " selected"; 
+  		if(event.target.className === 'icon home-button'){	
+  			document.getElementsByName('home')[0].className = "selected"; 
+  			
+  		}else{
+  			event.target.className += " selected"; 	
+  		}
+  		
   	}
 
 
@@ -19,11 +25,11 @@ export default class Header extends Component {
     
     return (
     	<div>	
-    		<Link to="/"><img href="/home" className="icon home-button" src={require("../../assets/media/stock/barbell.png")}></img></Link>
+    		<Link onClick={this.selectCategory} to="/"><img href="/home" className="icon home-button" src={require("../../assets/media/stock/barbell.png")}></img></Link>
 	        <div className="header">
 	      		<div className="title">Let&apos;s Workout!</div>
 	      		<ul className="nav">
-		      	 	<li className="item left"><Link onClick={this.selectCategory} className=" selected" to="/">Home</Link></li>
+		      	 	<li className="item left"><Link onClick={this.selectCategory} name="home" className="selected" to="/">Home</Link></li>
 		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/log">Log</Link></li>
 		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/compare">Compare</Link></li>
 		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/profile">Profile</Link></li>

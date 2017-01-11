@@ -36,7 +36,7 @@ export default class Log extends Component {
         	<form onSubmit={this.handleSubmit}>
 
         		<div className="input-header">Today&apos;s Date</div>
-	        	<input type="text" placeholder="Date" name="date" readOnly />
+	        	<input className="solid-date" type="text" placeholder="Date" name="date" readOnly />
 	        	<div className="drinks">
 		        	<div>Beverages</div>
 		        	<select>

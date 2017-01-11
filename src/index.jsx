@@ -12,7 +12,6 @@ import Profile from './components/Profile';
 import Eat from './components/Eat';
 import Exercises from './components/Exercises';
 import History from './components/History';
-
 import Wrapper from './components/Wrapper';
 
 ReactDOM.render((

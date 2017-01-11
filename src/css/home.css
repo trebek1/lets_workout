@@ -1,3 +1,8 @@
+textarea{
+	height: 250px;
+	width: 300px/**/;
+}
+
 html{
 	background: grey;
 }
@@ -24,7 +29,7 @@ ul{
 .app-wrapper{
 	margin: 0 auto;
 	background: #ffdb99;
-	height: 1050px;
+	height: 1250px;
 	width: 100%;
 }
 
@@ -76,7 +81,7 @@ ul{
 }
 
 .content{
-	height: 700px;
+	height: 900px;
 	text-align: center;
 	padding: 20px;
 }

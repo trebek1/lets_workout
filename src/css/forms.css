@@ -1,17 +1,30 @@
 input{
-	border: 1px solid #999;
+	
 	display: block;
-	height: 50px;
+	height: 25px;
 	width: 300px;
-	padding: 5px;
-	margin: 10px;
+	padding: 0px 5px;
+	margin: 10px 0px;
 	border-radius: 10px;
-	font-size: 20px;
+	font-size: 15px;
 }
 form{
 	display: inline-block;
 	margin: auto;
 }
+
+select{
+	padding: 5px;
+	height: 25px;
+	width: 300px;
+	margin-right: 5px;
+}
+
+.input-header{
+	font-size: 20px;
+	text-align: left;
+}
+
 .form-container{
 	display: block;
 	text-align: center;
@@ -20,4 +33,27 @@ form{
 .form-title{
 	font-size: 35px;
 	margin: 20px;
+}
+
+input[name="date"]{
+	color: #777;
+}
+
+input[placeholder="submit"]:hover{
+	border: 1px solid #999;
+	color: white;
+	background: black;
+}
+
+.drinks{
+	text-align:left;
+}
+
+textarea{
+	margin: 0px;
+	border-radius: 10px;
+	border: 1px solid #999;
+	margin-right: 10px;
+	font-size: 15px;
+
 }

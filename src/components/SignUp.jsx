@@ -9,9 +9,10 @@ export default class SignUp extends Component {
 
   	handleSubmit(e){
   		e.preventDefault(); 
-  		console.log('submitted!');
+  		
   		document.getElementsByName('username')[0].value = ""; 
   		document.getElementsByName('password')[0].value = ""; 
+      
   	}
 
   	render() {

@@ -10,6 +10,8 @@ import Log from './components/Log';
 import Compare from './components/Compare';
 import Profile from './components/Profile';
 import Eat from './components/Eat';
+import Exercises from './components/Exercises';
+import History from './components/History';
 
 import Wrapper from './components/Wrapper';
 
@@ -23,6 +25,8 @@ ReactDOM.render((
 			<Route path="/compare" pageId="Compare" component={Compare}/>
 			<Route path="/profile" pageId="Profile" component={Profile}/>
 			<Route path="/eat" pageId="Eat" component={Eat}/>
+			<Route path="/exercises" pageId="Exercises" component={Exercises}/>
+			<Route path="/history" pageId="History" component={History}/>
 		</Route>
 
 	</Router>), document.getElementById('root'));

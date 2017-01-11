@@ -9,6 +9,8 @@ export default class Log extends Component {
 
   	handleSubmit(e){
   		e.preventDefault(); 
+  		var miles = document.getElementsByName("run")[0].value; 
+  		console.log("test ", typeof miles );
   	}
 
   	componentDidMount(){
@@ -18,6 +20,10 @@ export default class Log extends Component {
   			var today = date.getMonth() + 1 + '/' + date.getDate() + "/" + date.getFullYear();
   			console.log("is this today ", today)
   			document.getElementsByName("date")[0].value = today; 
+  		})(); 
+
+  		(function setButtonName(){
+  			document.getElementsByClassName("daily-submit")[0].value="submit data for today";
   		})(); 
 
   	}
@@ -67,8 +73,8 @@ export default class Log extends Component {
 	        	
 	        	<textarea placeholder="Food Notes"/>
 	        	<div className="input-header">Miles Run</div>
-	        	<input type="text" placeholder="Miles" name="run" />
-	        	<input type="submit" placeholder="submit"/>	
+	        	<input type="number" placeholder="Miles" name="run" />
+	        	<input className="daily-submit" placeholder="submit" type="submit"></input>	
         	</form>
       	 </div>
     );

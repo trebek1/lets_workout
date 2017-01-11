@@ -19,6 +19,7 @@ select{
 	width: 300px;
 	margin: 10px 0px;
 	margin-right: 5px;
+	border: 1px solid #777;
 
 }
 
@@ -69,12 +70,41 @@ textarea{
 .today-results-container{
 	display: block;
 	margin: auto;
+	width: 1000px;
 }
 
 .results-header{
-	display: inline-block;
-	width: 300px;
+	display: block;
+	margin: 10px 0px;
+	margin-left: 175px;
+	width: 632px;
 }
+
+.block{
+	display: inline-block;
+	width: 200px;
+	height: 100px; 
+}
+
+.block-header{
+	display: inline-block;
+	width: 200px;
+	height: 100px; 
+}
+
+.more-detail{
+	text-align:left;
+	margin-left: 175px;
+	width: 500px;
+	height: 100px;
+	display: block;
+}
+
+
+
+
+
+
 
 
 

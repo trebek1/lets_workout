@@ -81,13 +81,13 @@ ul{
 }
 
 .content{
-	height: 900px;
+	height: 1000px;
 	text-align: center;
 	padding: 20px;
 }
 
 .footer{
-	height: 200px;
+	height: 100px;
 	padding: 10px;
 	background: black;
 	color: white;

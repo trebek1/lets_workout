@@ -17,8 +17,15 @@ select{
 	padding: 5px;
 	height: 25px;
 	width: 300px;
+	margin: 10px 0px;
 	margin-right: 5px;
+
 }
+
+form{
+	border-bottom: 2px solid black;
+}
+
 
 .input-header{
 	font-size: 20px;
@@ -58,3 +65,17 @@ textarea{
 	font-size: 15px;
 
 }
+
+.today-results-container{
+	display: block;
+	margin: auto;
+}
+
+.results-header{
+	display: inline-block;
+	width: 300px;
+}
+
+
+
+

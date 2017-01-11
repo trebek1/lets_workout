@@ -38,7 +38,7 @@ export default class Log extends Component {
         		<div className="input-header">Today&apos;s Date</div>
 	        	<input className="solid-date" type="text" placeholder="Date" name="date" readOnly />
 	        	<div className="drinks">
-		        	<div>Beverages</div>
+		        	<div className="input-header">Beverages</div>
 		        	<select>
 		        		<option disaled>Number of Drinks</option>
 		        		<option>0</option>
@@ -69,13 +69,17 @@ export default class Log extends Component {
 		        	</select>
 	        	</div>
 	        	<div className="input-header">Notes for Workout and Eating</div>
-	        	<textarea placeholder="workout Notes"/>
-	        	
-	        	<textarea placeholder="Food Notes"/>
+	        	<div className="areas">
+	        		<textarea placeholder="workout Notes"/>
+	        		<textarea placeholder="Food Notes"/>
+	        	</div>
 	        	<div className="input-header">Miles Run</div>
 	        	<input type="number" placeholder="Miles" name="run" />
 	        	<input className="daily-submit" placeholder="submit" type="submit"></input>	
         	</form>
+        	<div className="today-results-container">
+        		<div className="results-header input-header"> Today&apos;s Results</div>
+        	</div>
       	 </div>
     );
   }

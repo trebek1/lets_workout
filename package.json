@@ -32,6 +32,7 @@
     "css-loader": "^0.26.1",
     "express-session": "^1.14.2",
     "jsx-loader": "^0.13.2",
+    "mongodb": "^2.2.21",
     "mongoose": "^4.7.6",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",

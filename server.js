@@ -8,15 +8,29 @@ var bodyParser = require('body-parser');
 var app = express();
 var compiler = webpack(config);
 
+var MongoClient = require('mongodb').MongoClient
+
+// Connection URL
+var url = 'mongodb://localhost:27017/workout';
+
+// Use connect method to connect to the server
+MongoClient.connect(url, function(err, db) {
+  
+  console.log("Connected successfully to server");
+
+  db.close();
+});
+
+
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use(bodyParser.json({ type: 'application/json' }))
+app.use(bodyParser.json())
 
 // app.use('*', function(req,res){ 
 // 	res.header("Access-Control-Allow-Origin", "*"); 

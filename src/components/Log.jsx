@@ -59,6 +59,8 @@ export default class Log extends Component {
 
         		<div className="input-header">Today&apos;s Date</div>
 	        	<input className="solid-date" type="text" placeholder="Date" name="date" readOnly />
+	        	<div className="input-header">Weight</div>
+		        	<input type="number" placeholder="Weight" name="weight" />
 	        	<div className="drinks">
 		        	<div className="input-header">Beverages</div>
 		        	<select className="drinks-list">
@@ -76,7 +78,7 @@ export default class Log extends Component {
 		        		<option>10+</option>
 		        	</select>
 		        	<select className="coffee">
-		        		<option disaled>Number of Coffee</option>
+		        		<option disaled>Coffee</option>
 		        		<option>0</option>
 		        		<option>1</option>
 		        		<option>2</option>
@@ -95,28 +97,38 @@ export default class Log extends Component {
 	        		<textarea className="w-notes" placeholder="workout Notes"/>
 	        		<textarea className="f-notes" placeholder="Food Notes"/>
 	        	</div>
-	        	<div className="input-header">Miles Run</div>
-	        	<input type="number" placeholder="Miles" name="run" />
-	        	<input className="daily-submit" placeholder="submit" type="submit"></input>	
+	        	<div className="input-split">
+		        	<div className="input-header">Miles Run</div>
+		        	<input type="number" placeholder="Miles" name="run" />
+		        	<input className="daily-submit" placeholder="submit" type="submit"></input>	
+		        </div>
+		        <div className="input-split">
+		        	
+		        </div>
         	</form>
         	<div className="today-results-container">
         		<div className="results-header input-header"> Today&apos;s Results</div>
-        			<div className="block-header"> 
-        				<div>Date</div>
-        				<div className="dateDetail"></div>
-        			</div> 
-        			<div className="block-header"> 
-        				<div>Drinks</div>
-        				<div className="drinksDetail"></div>
-        			</div>
-        			<div className="block-header">  
-        				<div>Coffee</div>
-        				<div className="coffeeDetail"></div>
-        			</div> 
-        			<div className="block-header"> 
-        			<div>Miles </div>
-        			<div className="milesDetail"></div>
-        			</div>
+        			
+
+        			<table>
+					  <tr>
+					    <th>Date</th>
+					    <th>Weight</th>
+					    <th>Miles</th>
+					    <th>Coffee</th>
+					    <th>Drinks</th>
+					  </tr>
+					  <tr>
+					    <td className="dateDetail"></td>
+					    <td className="weightDetail"></td>
+					 	<td className="milesDetail"></td>
+					 	<td className="coffeeDetail"></td>
+					 	<td className="drinksDetail"></td>
+					  </tr>
+					</table>
+
+
+        			
        				<div className="more-detail"> 
        					<div>  Workout Notes </	div>
        					<div id="workoutDetail"></div>

@@ -100,7 +100,9 @@ textarea{
 	display: block;
 }
 
-
+.input-split{
+	float: left;
+}
 
 
 

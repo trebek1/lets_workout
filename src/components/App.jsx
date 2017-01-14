@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import {test} from '../utils/routes.jsx'; 
 
 export default class App extends Component {
-  	render() {
+
+    render() {
+
     return (	
         <div>
         	<div className="pillar-container">
@@ -26,5 +29,13 @@ export default class App extends Component {
       		</div>
       	 </div>
     );
+  }
+
+  componentDidMount(){
+    test().then((response)=>{
+      console.log('response ', response);
+    }).catch((error)=>{
+      console.log("error! ", error);
+    })
   }
 }

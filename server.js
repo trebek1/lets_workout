@@ -4,22 +4,41 @@ var express = require('express');
 var config = require('./webpack.config');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-
+var db = require('./models');
 var app = express();
 var compiler = webpack(config);
 
-var MongoClient = require('mongodb').MongoClient
+app.use(session({
+	secret: "super secret",
+	resave: false,
+	saveUninitialized: true
+}));
+
+db.User.createSecure("bill", "foobar", function(err, user){
+	console.log("success!", user);
+});
+ //(date, weight, alcohol,coffee,miles,workoutNotes,foodNotes, cb) {
+db.Day.addDay('1/1/2015', 205, 1,1,1,"none","good food", function(err,day){
+	console.log("day added ", day, err); 
+})
+
+//var MongoClient = require('mongodb').MongoClient
 
 // Connection URL
-var url = 'mongodb://localhost:27017/workout';
+//var url = 'mongodb://localhost:27017/workout';
 
 // Use connect method to connect to the server
-MongoClient.connect(url, function(err, db) {
+// MongoClient.connect(url, function(err, db) {
   
-  console.log("Connected successfully to server");
+//   console.log("Connected successfully to server");
+//   var myCursor = db.collection('users').find({}); 
+//   	while (myCursor.hasNext()) {
+//    		print(tojson(myCursor.next()));
+// }
+//   console.log(workout)
 
-  db.close();
-});
+//   db.close();
+// });
 
 
 app.use(require('webpack-dev-middleware')(compiler, {

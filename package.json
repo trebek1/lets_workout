@@ -28,7 +28,9 @@
   "dependencies": {
     "axios": "^0.15.3",
     "babel-loader": "^6.2.10",
+    "body-parser": "^1.15.2",
     "css-loader": "^0.26.1",
+    "express-session": "^1.14.2",
     "jsx-loader": "^0.13.2",
     "mongoose": "^4.7.6",
     "react": "^0.14.6",

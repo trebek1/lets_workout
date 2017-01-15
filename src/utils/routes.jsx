@@ -5,15 +5,20 @@ export function test(){
 }
 
 export function test2(username, password, confirm){
-	console.log("before requewst ", username, password, confirm);
-	return axios({
-  method: 'post',
-  url: '/signup',
-  data: {
-    'username': username,
-    'password': password,
-    'confirm': confirm
-  }
-});
+	console.log("before request ", username, password, confirm);
+
+  if(password === confirm){
+    return axios({
+      method: 'post',
+      url: '/signup',
+      data: {
+        'username': username,
+        'password': password,
+        'confirm': confirm
+      }
+    }); 
+  }else{
+      return "Passwords Do Not Match"; 
+    } 	
 }
 

@@ -14,16 +14,16 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-db.User.createSecure("bill", "foobar", function(err, user){
-	console.log("success!", user);
-	var id = user._id; 	
-	console.log("this is id ", id); 
-	db.Day.addDay('1/1/2015', 205, 1,1,1,"none","good food",id, function(err,day){
-		console.log("day added ", day, err); 
-	});	
+// db.User.createSecure("bill", "foobar", function(err, user){
+// 	console.log("success!", user);
+// 	var id = user._id; 	
+// 	console.log("this is id ", id); 
+// 	db.Day.addDay('1/1/2015', 205, 1,1,1,"none","good food",id, function(err,day){
+// 		console.log("day added ", day, err); 
+// 	});	
 
 
-});
+// });
  //(date, weight, alcohol,coffee,miles,workoutNotes,foodNotes, cb) {
 
 
@@ -76,7 +76,22 @@ app.get('/api', function(req, res){
 });
 
 app.post('/signup', function(req, res){
-	console.log("this is req ", req.body);
+	
+	var info = req.body; 
+	db.User.find({email: info.username}, function(err,user){
+		
+		if(user.length === 0){
+			db.User.createSecure(info.username, info.password, function(err, user){
+				console.log("success!", user);
+			});	
+		}else{
+			console.log("already in database");
+		}
+		
+	});
+	
+
+
 });
 
 app.get('*', function(req, res) {

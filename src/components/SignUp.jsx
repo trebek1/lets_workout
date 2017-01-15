@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {test, test2} from '../utils/routes.jsx'; 
+import {test, signup} from '../utils/routes.jsx'; 
 
 export default class SignUp extends Component {
   	
@@ -13,9 +13,10 @@ export default class SignUp extends Component {
       var username = document.getElementsByName('username')[0];
       var password = document.getElementsByName('password')[0];
       var confirm = document.getElementsByName('confirm')[0];
-      console.log(username.value,password.value,confirm.value);
-  		test2(username.value,password.value,confirm.value);
-  		username.value = ""; 
+      
+  		signup(username.value,password.value,confirm.value);
+  		
+      username.value = ""; 
   		password.value = ""; 
       confirm.value = ""; 
       

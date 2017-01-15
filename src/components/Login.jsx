@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {login} from '../utils/routes.jsx'; 
 
 export default class LogIn extends Component {
   	
@@ -9,8 +10,14 @@ export default class LogIn extends Component {
 
   	handleSubmit(e){
   		e.preventDefault(); 
-  		document.getElementsByName('username')[0].value = ""; 
-  		document.getElementsByName('password')[0].value = ""; 
+
+      var username = document.getElementsByName('username')[0];
+      var password = document.getElementsByName('password')[0];
+
+      login(username.value,password.value); 
+
+  		username.value = ""; 
+  		password.value = ""; 
   	}
 
   	render() {

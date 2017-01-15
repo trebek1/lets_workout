@@ -4,8 +4,7 @@ export function test(){
 	return axios.get('/api');
 }
 
-export function test2(username, password, confirm){
-	console.log("before request ", username, password, confirm);
+export function signup(username, password, confirm){
 
   if(password === confirm){
     return axios({
@@ -22,3 +21,15 @@ export function test2(username, password, confirm){
     } 	
 }
 
+export function login(username, password){
+  
+    return axios({
+      method: 'post',
+      url: '/login',
+      data: {
+        'username': username,
+        'password': password
+      }
+    }); 
+  
+}

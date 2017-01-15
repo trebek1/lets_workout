@@ -89,10 +89,25 @@ app.post('/signup', function(req, res){
 		}
 		
 	});
-	
-
-
 });
+
+app.post('/login', function(req, res){
+	
+	console.log("login!")
+	// var info = req.body; 
+	// db.User.find({email: info.username}, function(err,user){
+		
+	// 	if(user.length === 0){
+	// 		db.User.createSecure(info.username, info.password, function(err, user){
+	// 			console.log("success!", user);
+	// 		});	
+	// 	}else{
+	// 		console.log("already in database");
+	// 	}
+		
+	// });
+});
+
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));

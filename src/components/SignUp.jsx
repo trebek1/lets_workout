@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {test, signup} from '../utils/routes.jsx'; 
+import {test, signup, getSession} from '../utils/routes.jsx'; 
 
 export default class SignUp extends Component {
   	
@@ -18,7 +18,7 @@ export default class SignUp extends Component {
   		
       username.value = ""; 
   		password.value = ""; 
-      confirm.value = ""; 
+      confirm.value = "";
       
   	}
 

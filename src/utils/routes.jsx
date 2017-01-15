@@ -30,6 +30,12 @@ export function login(username, password){
         'username': username,
         'password': password
       }
-    }); 
-  
+    });
 }
+export function getSession(){
+  return axios({
+      method: 'get',
+      url: '/session'
+    });  
+} 
+  

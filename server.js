@@ -16,11 +16,17 @@ app.use(session({
 
 db.User.createSecure("bill", "foobar", function(err, user){
 	console.log("success!", user);
+	var id = user._id; 	
+	console.log("this is id ", id); 
+	db.Day.addDay('1/1/2015', 205, 1,1,1,"none","good food",id, function(err,day){
+		console.log("day added ", day, err); 
+	});	
+
+
 });
  //(date, weight, alcohol,coffee,miles,workoutNotes,foodNotes, cb) {
-db.Day.addDay('1/1/2015', 205, 1,1,1,"none","good food", function(err,day){
-	console.log("day added ", day, err); 
-})
+
+
 
 //var MongoClient = require('mongodb').MongoClient
 

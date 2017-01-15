@@ -14,7 +14,8 @@ userSchema.statics.createSecure = function (email, password, cb) {
       console.log(hash);
       that.create({
         email: email,
-        passwordDigest: hash
+        passwordDigest: hash,
+        log: []
        }, cb)
     });
   })
@@ -47,3 +48,11 @@ userSchema.methods.checkPassword = function(password) {
 var User = mongoose.model("User", userSchema);
 
 module.exports = User;
+
+
+
+
+
+
+
+

@@ -21,9 +21,12 @@ app.use("/", function (req, res, next) {
 
   req.login = function (user) {
     req.session.userId = user._id;
+    req.session.username = user.email;
+    req.session.save();  
   };
 
   req.currentUser = function (cb) {
+  	console.log("This is the session ", req.session);
      db.User.
       findOne({
           _id: req.session.userId
@@ -35,10 +38,10 @@ app.use("/", function (req, res, next) {
   };
 
   req.logout = function () {
-    req.session.userId = null;
-    req.user = null;
+  	req.session.destroy();
+  	console.log("this is session ", req.session); 
   }
-
+  console.log("calling next")
   next(); 
 });
 
@@ -106,8 +109,11 @@ app.get('/api', function(req, res){
 });
 
 app.get('/session', function(req, res){
-	console.log("this is session ", req.session); 
-	res.send(req.session.userId);
+	req.currentUser(function(err, user){
+		console.log("here")
+		console.log("user ", user);
+		res.send(user);
+	}); 
 }); 
 
 app.post('/signup', function(req, res){
@@ -131,11 +137,19 @@ app.post('/login', function(req, res){
 
 	db.User.authenticate(user.username, user.password, function(err, user){
 		req.login(user);
-		console.log("logged in!");
+		res.send('logged in!');
 
 	});
 	
 	
+});
+
+app.get('/logout', function(req, res){
+	console.log("logout is hit");
+	req.logout(); 
+
+	res.send('logout finished');
+
 });
 
 

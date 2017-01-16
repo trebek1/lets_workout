@@ -40,11 +40,11 @@ userSchema.statics.authenticate = function(email, password, cb) {
       console.log("this is user ", user); 
       
       if (user.length === 0){
-        throw new Error("Username does not exist");
+        console.log("no user")
       } else if (user[0].checkPassword(password)){
         cb(null, user[0]);
       }else{
-        throw new Error("Error Occured");
+        console.log('err');
       }
     });
  };

@@ -9,7 +9,6 @@ var app = express();
 var compiler = webpack(config);
 
 //create session 
-
 app.use(session({
 	secret: "super secret",
 	resave: false,
@@ -85,11 +84,9 @@ app.get('/logout', function(req, res){
 	res.send('logout finished');
 });
 
-
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
-
 
 app.listen(3000, function(err) {
   if (err) {

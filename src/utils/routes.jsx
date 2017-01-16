@@ -21,6 +21,26 @@ export function signup(username, password, confirm){
     } 	
 }
 
+export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodNotes, id){
+
+    return axios({
+      method: 'post',
+      url: '/addDay',
+      data: {
+        'date': date,
+        'weight': weight,
+        'alcohol': alcohol,
+        'coffee': coffee, 
+        'miles' : miles, 
+        'workoutNotes' : workoutNotes, 
+        'foodNotes': foodNotes, 
+        'id': id
+      }
+    }); 
+  }
+
+
+
 export function login(username, password){
   
     return axios({
@@ -49,7 +69,8 @@ export function getSession(){
   }).then((response)=>{
     if(response.data){
       this.setState({
-      loggedIn : true
+      loggedIn : true,
+      id: response.data._id
     });  
     }
   

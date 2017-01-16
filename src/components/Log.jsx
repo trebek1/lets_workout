@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+import {addDay, getSession} from '../utils/routes.jsx'; 
 
 export default class Log extends Component {
   	
   	constructor(props){
   		super(props); 
   		this.handleSubmit = this.handleSubmit.bind(this); 
-      this.state = {submitted: false}
-  	}	
+      this.state = {submitted: false, id: null}
+  	}
+
+    componentWillMount(){
+      var thisSession = getSession.bind(this); 
+      thisSession(); 
+    }	
 
   	handleSubmit(e){
   		e.preventDefault(); 
@@ -32,6 +38,10 @@ export default class Log extends Component {
   		document.getElementsByClassName("weightDetail")[0].innerHTML = weight; 
       document.getElementById('workoutDetail').innerHTML = wNotes;
       document.getElementById('foodDetail').innerHTML = fNotes;
+      // export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodNotes, id){
+
+      addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id); 
+
       this.setState({
         submitted: true
       });
@@ -49,6 +59,7 @@ export default class Log extends Component {
   	}
 
   	render() {
+      console.log("this is state ", this.state);
       var styles; 
       if(this.state.submitted){
         styles = {

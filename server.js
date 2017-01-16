@@ -48,7 +48,6 @@ app.use(bodyParser.json());
 
 app.get('/session', function(req, res){
 	req.currentUser(function(err, user){
-		console.log("user ", user);
 		res.send(user);
 	}); 
 }); 
@@ -72,6 +71,20 @@ app.post('/login', function(req, res){
 		req.login(user);
 		res.send('logged in!');
 	});
+});
+
+app.post('/addDay', function(req,res){
+  var data = req.body; 
+  
+  db.Day.addDay(data.date, data.weight, data.alcohol,data.coffee, data.miles,data.workoutNotes, data.foodNotes, data.id, function(err, day){
+    console.log("one day added ", day); 
+    res.send('Day Added');
+  });
+    
+}); 
+
+app.patch('/addDay', function(req,res){
+  
 });
 
 app.get('/logout', function(req, res){

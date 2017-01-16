@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {test} from '../utils/routes.jsx'; 
 
 export default class App extends Component {
 

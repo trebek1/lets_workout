@@ -12,7 +12,14 @@ var daySchema = new mongoose.Schema({
   userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
-daySchema.statics.addDay = function(date, weight, alcohol,coffee,miles,workoutNotes,foodNotes,id, cb){
+daySchema.statics.addDay = function(date, weight, alcohol,coffee,miles,workoutNotes,foodNotes,id,cb){
+  if(coffee === "Coffee"){
+    coffee = 0; 
+  }
+
+  if(alcohol === "Number of Drinks"){
+    alcohol = 0; 
+  }
   	this.create({
 	    date: date,
 		weight: weight, 

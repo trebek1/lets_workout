@@ -12,26 +12,27 @@ export default class Log extends Component {
   		var date = document.getElementsByClassName('solid-date')[0].value;
 
   		var miles = document.getElementsByName("run")[0].value; 
-  					document.getElementsByName("run")[0].value = ""; 
+  		    document.getElementsByName("run")[0].value = ""; 
   		
   		var drinks = document.getElementsByClassName('drinks-list')[0],
-  			drink = drinks.options[drinks.selectedIndex].text;	 
-  					 document.getElementsByClassName('drinks-list')[0].selectedIndex = 0; 
+  			  drink = drinks.options[drinks.selectedIndex].text;	 
+  			  document.getElementsByClassName('drinks-list')[0].selectedIndex = 0; 
 
   		var coffees = document.getElementsByClassName('coffee')[0],
-  			coffee = coffees.options[coffees.selectedIndex].text;	 
-  					 document.getElementsByClassName('coffee')[0].selectedIndex = 0; 
+  			  coffee = coffees.options[coffees.selectedIndex].text;	 
+  				document.getElementsByClassName('coffee')[0].selectedIndex = 0; 
 
   		var wNotes = document.getElementsByClassName('w-notes')[0].value;
-  					 document.getElementsByClassName('w-notes')[0].value = "";
+  				document.getElementsByClassName('w-notes')[0].value = "";
   		var fNotes = document.getElementsByClassName('f-notes')[0].value;
-  					 document.getElementsByClassName('f-notes')[0].value = ""; 
-  			document.getElementsByClassName('dateDetail')[0].innerHTML = date;
-  			document.getElementsByClassName('drinksDetail')[0].innerHTML = drink;
-  			document.getElementsByClassName('coffeeDetail')[0].innerHTML = coffee;
-  			document.getElementsByClassName('milesDetail')[0].innerHTML = miles;
-  			document.getElementById('workoutDetail').innerHTML = wNotes;
-  			document.getElementById('foodDetail').innerHTML = fNotes;
+  				document.getElementsByClassName('f-notes')[0].value = ""; 
+  			
+      document.getElementsByClassName('dateDetail')[0].innerHTML = date;
+  		document.getElementsByClassName('drinksDetail')[0].innerHTML = drink;
+  		document.getElementsByClassName('coffeeDetail')[0].innerHTML = coffee;
+  		document.getElementsByClassName('milesDetail')[0].innerHTML = miles;
+  		document.getElementById('workoutDetail').innerHTML = wNotes;
+  		document.getElementById('foodDetail').innerHTML = fNotes;
 
   	}
 
@@ -40,7 +41,6 @@ export default class Log extends Component {
   		(function setDate(){
   			var date = new Date(); 
   			var today = date.getMonth() + 1 + '/' + date.getDate() + "/" + date.getFullYear();
-  			console.log("is this today ", today)
   			document.getElementsByName("date")[0].value = today; 
   		})(); 
 
@@ -108,33 +108,32 @@ export default class Log extends Component {
         	</form>
         	<div className="today-results-container">
         		<div className="results-header input-header"> Today&apos;s Results</div>
-        			
-
         			<table>
-					  <tr>
-					    <th>Date</th>
-					    <th>Weight</th>
-					    <th>Miles</th>
-					    <th>Coffee</th>
-					    <th>Drinks</th>
-					  </tr>
-					  <tr>
-					    <td className="dateDetail"></td>
-					    <td className="weightDetail"></td>
-					 	<td className="milesDetail"></td>
-					 	<td className="coffeeDetail"></td>
-					 	<td className="drinksDetail"></td>
-					  </tr>
+                <thead>
+      					  <tr>
+      					    <th>Date</th>
+      					    <th>Weight</th>
+      					    <th>Miles</th>
+      					    <th>Coffee</th>
+      					    <th>Drinks</th>
+      					  </tr>
+              </thead>
+              <tbody>
+    					  <tr>
+    					    <td className="dateDetail"></td>
+    					    <td className="weightDetail"></td>
+      					 	<td className="milesDetail"></td>
+      					 	<td className="coffeeDetail"></td>
+      					 	<td className="drinksDetail"></td>
+    					  </tr>
+            </tbody>
 					</table>
-
-
-        			
        				<div className="more-detail"> 
-       					<div>  Workout Notes </	div>
+       					<div className="notesTitle">  Workout Notes </	div>
        					<div id="workoutDetail"></div>
        				</div>
        				<div className="more-detail"> 
-       					<div>Food Notes </div>
+       					<div className="notesTitle">Food Notes </div>
        					<div id="foodDetail"></div>
        				</div>
         			

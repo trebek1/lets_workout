@@ -5,6 +5,7 @@ export default class Log extends Component {
   	constructor(props){
   		super(props); 
   		this.handleSubmit = this.handleSubmit.bind(this); 
+      this.state = {submitted: false}
   	}	
 
   	handleSubmit(e){
@@ -26,13 +27,20 @@ export default class Log extends Component {
   				document.getElementsByClassName('w-notes')[0].value = "";
   		var fNotes = document.getElementsByClassName('f-notes')[0].value;
   				document.getElementsByClassName('f-notes')[0].value = ""; 
+      var weight = document.getElementsByName('weight')[0].value; 
+          document.getElementsByName('weight')[0].value = ""; 
   			
       document.getElementsByClassName('dateDetail')[0].innerHTML = date;
   		document.getElementsByClassName('drinksDetail')[0].innerHTML = drink;
   		document.getElementsByClassName('coffeeDetail')[0].innerHTML = coffee;
   		document.getElementsByClassName('milesDetail')[0].innerHTML = miles;
-  		document.getElementById('workoutDetail').innerHTML = wNotes;
-  		document.getElementById('foodDetail').innerHTML = fNotes;
+  		document.getElementsByClassName("weightDetail")[0].innerHTML = weight; 
+      document.getElementById('workoutDetail').innerHTML = wNotes;
+      document.getElementById('foodDetail').innerHTML = fNotes;
+      
+      this.setState({
+        submitted: true
+      })
 
   	}
 
@@ -51,6 +59,17 @@ export default class Log extends Component {
   	}
 
   	render() {
+      var styles; 
+
+      if(this.state.submitted){
+        styles = {
+          'display': 'block'
+        }
+      }else{
+        styles = {
+          'display': 'none'
+        }
+      }
 
     return (	
         <div className="form-container">
@@ -98,7 +117,7 @@ export default class Log extends Component {
 	        		<textarea className="f-notes" placeholder="Food Notes"/>
 	        	</div>
 	        	<div className="input-split">
-		        	<div className="input-header">Miles Run</div>
+		        	<div className="input-header">Miles Ran</div>
 		        	<input type="number" placeholder="Miles" name="run" />
 		        	<input className="daily-submit" placeholder="submit" type="submit"></input>	
 		        </div>
@@ -106,7 +125,7 @@ export default class Log extends Component {
 		        	
 		        </div>
         	</form>
-        	<div className="today-results-container">
+        	<div className="today-results-container" style={styles}>
         		<div className="results-header input-header"> Today&apos;s Results</div>
         			<table>
                 <thead>

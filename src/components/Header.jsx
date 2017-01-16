@@ -28,11 +28,11 @@ export default class Header extends Component {
 		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/log">Log</Link></li>
               <li className="item left"><Link onClick={this.selectCategory} to="/history">History</Link></li>
 		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/compare">Compare</Link></li>
-		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/profile">Profile</Link></li>
 		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/eat">What to Eat</Link></li>
               <li className="item left"><Link onClick={this.selectCategory} to="/exercises">Exercises</Link></li>
 		      	 	<li className="item right"><Link onClick={this.selectCategory} to="/login">Login</Link></li>
 		      	 	<li className="item right"><Link onClick={this.selectCategory} to="/signup">Sign Up</Link></li>
+              <li className="item right"><Link onClick={this.selectCategory} to="/profile">Profile</Link></li>
 	      	 	</ul>
 	      	 </div>
 	      	 

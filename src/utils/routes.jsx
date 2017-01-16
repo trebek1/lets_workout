@@ -43,12 +43,10 @@ export function login(username, password){
     })
 }
 export function getSession(){
-  console.log("is this running? ")
   axios({
     method: 'get',
     url: '/session'
   }).then((response)=>{
-    console.log("response ", response);
     if(response.data){
       this.setState({
       loggedIn : true
@@ -69,13 +67,11 @@ export function logout(){
       url: '/logout'
       
     }).then((response)=>{
-      console.log("success for logout route");
         this.setState({
           loggedIn: false,
           logMessage: "Successfully Logged Out!"
         });
     }).catch((error)=>{
-      console.log("fail for logout route")
         this.setState({
           logMessage: "A System Error Occured"
         })

@@ -36,8 +36,6 @@ userSchema.statics.authenticate = function(email, password, cb) {
      email: email
     }, 
     function(err, user){
-
-      console.log("this is user ", user); 
       
       if (user.length === 0){
         console.log("no user")

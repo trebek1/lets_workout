@@ -26,7 +26,6 @@ app.use("/", function (req, res, next) {
   };
 
   req.currentUser = function (cb) {
-  	console.log("This is the session ", req.session);
      db.User.
       findOne({
           _id: req.session.userId
@@ -39,9 +38,7 @@ app.use("/", function (req, res, next) {
 
   req.logout = function () {
   	req.session.destroy();
-  	console.log("this is session ", req.session); 
   }
-  console.log("calling next")
   next(); 
 });
 
@@ -110,7 +107,6 @@ app.get('/api', function(req, res){
 
 app.get('/session', function(req, res){
 	req.currentUser(function(err, user){
-		console.log("here")
 		console.log("user ", user);
 		res.send(user);
 	}); 
@@ -123,7 +119,6 @@ app.post('/signup', function(req, res){
 		
 		if(user.length === 0){
 			db.User.createSecure(info.username, info.password, function(err, user){
-				console.log("success!", user);
 			});	
 		}else{
 			console.log("already in database");
@@ -145,7 +140,6 @@ app.post('/login', function(req, res){
 });
 
 app.get('/logout', function(req, res){
-	console.log("logout is hit");
 	req.logout(); 
 
 	res.send('logout finished');

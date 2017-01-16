@@ -32,10 +32,6 @@ export default class App extends Component {
   }
 
   componentDidMount(){
-    test().then((response)=>{
-      console.log('response ', response);
-    }).catch((error)=>{
-      console.log("error! ", error);
-    })
+  
   }
 }

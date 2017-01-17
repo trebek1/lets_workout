@@ -87,7 +87,6 @@ app.post('/addDay', function(req,res){
   var data = req.body; 
   
   db.Day.addDay(data.date, data.weight, data.alcohol,data.coffee, data.miles,data.workoutNotes, data.foodNotes, data.id, function(err, day){
-    console.log("one day added ", day); 
     res.send('Day Added');
   });
     

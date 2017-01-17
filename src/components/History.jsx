@@ -12,7 +12,6 @@ constructor(props){
 componentWillMount(){
 	var data = getRecordsAndSession.bind(this);
 	data();
-	
 }
 
 mapDaysToPage(){
@@ -36,9 +35,8 @@ mapDaysToPage(){
 }
 
 render() {
-  		console.log("this.state ", this.state);
     return (	
-        <div className="">
+        <div className="dataHistory">
       		<table>
                 <thead>
 				  <tr>
@@ -51,9 +49,7 @@ render() {
 				    <th> Food Notes </th>
 				  </tr>
               	</thead>
-              	
 				  {this.mapDaysToPage()}
-            	
 			</table>
       	 </div>
     );

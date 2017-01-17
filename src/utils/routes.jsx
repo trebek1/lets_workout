@@ -39,8 +39,6 @@ export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodN
     }); 
   }
 
-
-
 export function login(username, password){
   
     return axios({
@@ -51,7 +49,6 @@ export function login(username, password){
         'password': password
       }
     }).then((response)=>{
-      console.log("sucessfully logged in response")
         this.setState({
           loggedIn: true,
           logMessage: "Successfully Logged In!"
@@ -102,9 +99,7 @@ export function logout(){
 export function getRecordsAndSession(){
   
   axios.get('/session').then((data)=>{
-  
     var id = data.data._id
-    console.log("id ", data ); 
     axios({
       method: 'post',
       url: '/days',
@@ -112,7 +107,6 @@ export function getRecordsAndSession(){
         'id': id
       }
       }).then((days)=>{
-          console.log("this is days ", days);
           this.setState({
             records: days.data,
             loggedIn: id ? true:false,

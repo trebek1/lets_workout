@@ -50,6 +50,16 @@ app.get('/session', function(req, res){
 	req.currentUser(function(err, user){
 		res.send(user);
 	}); 
+});
+
+app.post('/days', function(req,res){
+  var data = req.body; 
+  
+  db.Day.find({'userId':data.id}, function(err, data){
+    res.send(data);
+  })
+  
+
 }); 
 
 app.post('/signup', function(req, res){

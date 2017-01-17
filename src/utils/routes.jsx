@@ -99,6 +99,30 @@ export function logout(){
     })
 }
 
+export function getRecordsAndSession(){
+  
+  axios.get('/session').then((data)=>{
+  
+    var id = data.data._id
+    console.log("id ", data ); 
+    axios({
+      method: 'post',
+      url: '/days',
+      data: {
+        'id': id
+      }
+      }).then((days)=>{
+          console.log("this is days ", days);
+          this.setState({
+            records: days.data,
+            loggedIn: id ? true:false,
+            id: id
+          })
+      })  
+  }).catch(error => console.log(error));
+}
+
+
   
  
   

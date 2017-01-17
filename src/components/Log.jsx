@@ -38,7 +38,6 @@ export default class Log extends Component {
   		document.getElementsByClassName("weightDetail")[0].innerHTML = weight; 
       document.getElementById('workoutDetail').innerHTML = wNotes;
       document.getElementById('foodDetail').innerHTML = fNotes;
-      // export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodNotes, id){
 
       addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id); 
 
@@ -59,7 +58,6 @@ export default class Log extends Component {
   	}
 
   	render() {
-      console.log("this is state ", this.state);
       var styles; 
       if(this.state.submitted){
         styles = {

@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
+import {getSession} from '../utils/routes.jsx'; 
 
 export default class Profile extends Component {
+	constructor(props){
+  		super(props); 
+  		
+      this.state = {submitted: false, id: null}
+  	}
+
+    componentWillMount(){
+      var thisSession = getSession.bind(this); 
+      thisSession(); 
+    }	
+
   	render() {
-    return (
+  		if(this.state.loggedIn){
+  			return (
     	<div className="profile-page">
     	<div className="profile-page-container">	
 	        <div className="profile-container">
@@ -34,5 +47,11 @@ export default class Profile extends Component {
 	      	 
 	    </div>
     );
+  		}else{
+  			return(
+  				<div> Sign Up to Create a Profile </div>
+  			)
+  		}
+    
   }
 }

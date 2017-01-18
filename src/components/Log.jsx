@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import {addDay, getSession} from '../utils/routes.jsx'; 
+import {addDay, getSession, getSessionAndPostCheck} from '../utils/routes.jsx'; 
 
 export default class Log extends Component {
   	
   	constructor(props){
   		super(props); 
   		this.handleSubmit = this.handleSubmit.bind(this); 
-      this.state = {submitted: false, id: null}
+      this.state = {submitted: false, id: null, posted: false}
   	}
 
     componentWillMount(){
-      var thisSession = getSession.bind(this); 
-      thisSession(); 
+      var data = getSessionAndPostCheck.bind(this);
+      data(); 
+      // var thisSession = getSession.bind(this); 
+      // thisSession(); 
     }	
 
   	handleSubmit(e){
@@ -39,7 +41,13 @@ export default class Log extends Component {
       document.getElementById('workoutDetail').innerHTML = wNotes;
       document.getElementById('foodDetail').innerHTML = fNotes;
 
-      addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id); 
+      if(this.state.posted && this.state.id){
+        console.log("patch")
+        addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id, 'patch'); 
+      }else if(this.state.id){
+        console.log("post")
+        addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id, 'post'); 
+      }
 
       this.setState({
         submitted: true

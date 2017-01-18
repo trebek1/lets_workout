@@ -54,8 +54,19 @@ app.get('/session', function(req, res){
 
 app.post('/days', function(req,res){
   var data = req.body; 
-  
+  console.log("this is data ", data)
   db.Day.find({'userId':data.id}, function(err, data){
+    console.log("this is data ", data)
+    res.send(data);
+  })
+  
+
+}); 
+
+app.post('/today', function(req,res){
+  var data = req.body; 
+  
+  db.Day.find({'userId':data.id,'date':data.date}, function(err, data){
     res.send(data);
   })
   
@@ -85,16 +96,19 @@ app.post('/login', function(req, res){
 
 app.post('/addDay', function(req,res){
   var data = req.body; 
-  
   db.Day.addDay(data.date, data.weight, data.alcohol,data.coffee, data.miles,data.workoutNotes, data.foodNotes, data.id, function(err, day){
     res.send('Day Added');
-  });
-    
+  });    
 }); 
 
 app.patch('/addDay', function(req,res){
-  
-});
+  var data = req.body;
+  console.log("this is data", data);
+  db.Day.update({'userId': data.id, 'date': data.date}, {$set:{weight: data.weight, alcohol: data.alcohol,coffee: data.coffee, miles: data.miles, workoutNotes: data.workoutNotes,foodNotes: data.foodNotes }},{ upsert: true }, function(err,day){
+    console.log(err, day); 
+    res.send(day); 
+  });    
+});    
 
 app.get('/logout', function(req, res){
 	req.logout(); 

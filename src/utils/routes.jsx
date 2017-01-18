@@ -21,10 +21,10 @@ export function signup(username, password, confirm){
     } 	
 }
 
-export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodNotes, id){
+export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodNotes, id, method){
 
     return axios({
-      method: 'post',
+      method: method,
       url: '/addDay',
       data: {
         'date': date,
@@ -99,6 +99,7 @@ export function logout(){
 export function getRecordsAndSession(){
   
   axios.get('/session').then((data)=>{
+    console.log("this is dat ", data)
     var id = data.data._id
     axios({
       method: 'post',
@@ -107,6 +108,7 @@ export function getRecordsAndSession(){
         'id': id
       }
       }).then((days)=>{
+        console.log("this is dayas ", days)
           this.setState({
             records: days.data,
             loggedIn: id ? true:false,
@@ -115,6 +117,47 @@ export function getRecordsAndSession(){
       })  
   }).catch(error => console.log(error));
 }
+
+export function getSessionAndPostCheck(){
+  
+  axios.get('/session').then((data)=>{
+    if(data){
+      var id = data.data._id;
+      var date = new Date();
+      var today = date.getMonth() + 1 + '/' + date.getDate() + "/" + date.getFullYear();
+    axios({
+      method: 'post',
+      url: '/today',
+      data: {
+        'id': id, 
+        'date': today
+      }
+      }).then((info)=>{
+        
+        if(info.data.length > 0){
+          this.setState({
+            posted: true,
+            loggedIn: true,
+            id: id
+          }); 
+        }else{
+          this.setState({
+            posted: false,
+            loggedIn: true,
+            id: id
+          });
+        }
+      });    
+    }else{
+      this.setState({
+        loggedIn: false
+      });
+    }
+    
+  }).catch(error => console.log(error));
+}
+
+
 
 
   

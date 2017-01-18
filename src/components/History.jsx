@@ -16,6 +16,7 @@ componentWillMount(){
 
 mapDaysToPage(){
 	var records = this.state.records; 
+	console.log("this is records ", records);
 	return(<tbody>
 			{records.map((item, i)=>{
 			return(
@@ -35,7 +36,8 @@ mapDaysToPage(){
 }
 
 render() {
-    return (	
+	if(this.state.loggedIn){
+		return (	
         <div className="dataHistory">
       		<table>
                 <thead>
@@ -53,5 +55,11 @@ render() {
 			</table>
       	 </div>
     );
+	}else{
+		return(
+			<div> Please Log In to See Your Logged Historical Data</div>
+		)
+	}
+    
   }
 }

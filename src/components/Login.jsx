@@ -7,6 +7,7 @@ export default class LogIn extends Component {
   		super(props); 
   		this.handleSubmit = this.handleSubmit.bind(this); 
       this.logout = this.logout.bind(this);
+      this.checkHeadings = this.checkHeadings.bind(this);
       this.state = {loggedIn : false, logMessage: ''}
   	}	
 
@@ -37,8 +38,16 @@ export default class LogIn extends Component {
       sessionHere(); 
     }
 
-  	render() {
+    checkHeadings(){
+      var path = location.pathname; 
+      if(path !== '/'){
+        var route = path.slice(path.indexOf('/') + 1);
+        document.getElementsByClassName("selected")[0].className = ""; 
+        document.getElementsByName(route)[0].className = "selected";
+      }
+    }
 
+  	render() {
       if(!this.state.loggedIn){
         return (  
         <div className="form-container">
@@ -58,7 +67,8 @@ export default class LogIn extends Component {
 
         )
       }
-
-    
+  }
+  componentDidMount(){
+    this.checkHeadings();
   }
 }

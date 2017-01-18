@@ -7,6 +7,7 @@ export default class Log extends Component {
   		super(props); 
   		this.handleSubmit = this.handleSubmit.bind(this); 
       this.state = {submitted: false, id: null, posted: false}
+      this.checkHeadings = this.checkHeadings.bind(this);
   	}
 
     componentWillMount(){
@@ -64,6 +65,15 @@ export default class Log extends Component {
   			document.getElementsByClassName("daily-submit")[0].value="submit data for today";
   		})(); 
   	}
+
+    checkHeadings(){
+      var path = location.pathname; 
+      if(path !== '/'){
+        var route = path.slice(path.indexOf('/') + 1);
+        document.getElementsByClassName("selected")[0].className = ""; 
+        document.getElementsByName(route)[0].className = "selected";
+      }
+    }
 
   	render() {
       var styles; 
@@ -160,5 +170,8 @@ export default class Log extends Component {
         	</div>
       </div>
     );
+  }
+   componentDidMount(){
+    this.checkHeadings();
   }
 }

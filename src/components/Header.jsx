@@ -22,8 +22,7 @@ export default class Header extends Component {
   	}
 
   	render() {
-      var path = location.pathname; 
-      
+
     return (
     	<div>	
     		<Link onClick={this.selectCategory} to="/"><img href="/home" className="icon home-button" src={require("../../assets/media/stock/barbell.png")}></img></Link>
@@ -45,5 +44,14 @@ export default class Header extends Component {
       	</div>
 
     );
+  }
+
+  componentDidMount(){
+    var path = location.pathname; 
+    if(path !== '/'){
+      var route = path.slice(path.indexOf('/') + 1);
+      document.getElementsByClassName("selected")[0].className = ""; 
+      document.getElementsByName(route)[0].className = "selected";
+    }
   }
 }

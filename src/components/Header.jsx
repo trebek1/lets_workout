@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 
 export default class Header extends Component {
+
+    componentWillMount(){
+    
+    }
   	
   	constructor(props){
   		super(props); 
@@ -18,21 +22,23 @@ export default class Header extends Component {
   	}
 
   	render() {
+      var path = location.pathname; 
+      
     return (
     	<div>	
     		<Link onClick={this.selectCategory} to="/"><img href="/home" className="icon home-button" src={require("../../assets/media/stock/barbell.png")}></img></Link>
 	        <div className="header">
 	      		<div className="title">Let&apos;s Workout!</div>
 	      		<ul className="nav">
-		      	 	<li className="item left"><Link onClick={this.selectCategory} name="home" className="selected" to="/">Home</Link></li>
-		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/log">Log</Link></li>
-              <li className="item left"><Link onClick={this.selectCategory} to="/history">History</Link></li>
-		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/compare">Compare</Link></li>
-		      	 	<li className="item left"><Link onClick={this.selectCategory} to="/eat">What to Eat</Link></li>
-              <li className="item left"><Link onClick={this.selectCategory} to="/exercises">Exercises</Link></li>
-		      	 	<li className="item right"><Link onClick={this.selectCategory} to="/login">Login</Link></li>
-		      	 	<li className="item right"><Link onClick={this.selectCategory} to="/signup">Sign Up</Link></li>
-              <li className="item right"><Link onClick={this.selectCategory} to="/profile">Profile</Link></li>
+		      	 	<li className="item left"><Link onClick={this.selectCategory} name="home" to="/" className="selected">Home</Link></li>
+		      	 	<li className="item left"><Link onClick={this.selectCategory} name="log" to="/log">Log</Link></li>
+              <li className="item left"><Link onClick={this.selectCategory} name="history" to="/history">History</Link></li>
+		      	 	<li className="item left"><Link onClick={this.selectCategory} name="compare" to="/compare">Compare</Link></li>
+		      	 	<li className="item left"><Link onClick={this.selectCategory} name="eat" to="/eat">What to Eat</Link></li>
+              <li className="item left"><Link onClick={this.selectCategory} name="exercises" to="/exercises">Exercises</Link></li>
+		      	 	<li className="item right"><Link onClick={this.selectCategory} name="login" to="/login">Login</Link></li>
+		      	 	<li className="item right"><Link onClick={this.selectCategory} name="signup" to="/signup">Sign Up</Link></li>
+              <li className="item right"><Link onClick={this.selectCategory} name="profile" to="/profile">Profile</Link></li>
 	      	 	</ul>
 	      	 </div>
 	      	 

@@ -3,6 +3,14 @@ textarea{
 	width: 300px/**/;
 }
 
+.pillar, div i{
+	color: black;
+}
+
+.pillar:hover{
+	color: red;
+}
+
 html{
 	background: grey;
 }
@@ -99,7 +107,7 @@ ul{
 	background: lightgray;
 }
 
-.pillar{
+.pillar, .home{
 	font-size: 32px;
 }
 

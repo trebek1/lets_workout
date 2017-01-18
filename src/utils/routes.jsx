@@ -99,7 +99,6 @@ export function logout(){
 export function getRecordsAndSession(){
   
   axios.get('/session').then((data)=>{
-    console.log("this is dat ", data)
     var id = data.data._id
     axios({
       method: 'post',
@@ -108,7 +107,6 @@ export function getRecordsAndSession(){
         'id': id
       }
       }).then((days)=>{
-        console.log("this is dayas ", days)
           this.setState({
             records: days.data,
             loggedIn: id ? true:false,

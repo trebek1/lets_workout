@@ -16,7 +16,6 @@ componentWillMount(){
 
 mapDaysToPage(){
 	var records = this.state.records; 
-	console.log("this is records ", records);
 	return(<tbody>
 			{records.map((item, i)=>{
 			return(

@@ -49,6 +49,9 @@ export function login(username, password){
         'password': password
       }
     }).then((response)=>{
+        this.success(); 
+        this.props.successLog(response.data._id, username);
+      
         this.setState({
           loggedIn: true,
           logMessage: "Successfully Logged In!"
@@ -65,6 +68,7 @@ export function getSession(){
     url: '/session'
   }).then((response)=>{
     if(response.data){
+
       this.setState({
       loggedIn : true,
       id: response.data._id

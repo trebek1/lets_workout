@@ -47,6 +47,7 @@ export default class Header extends Component {
   }
 
   componentDidMount(){
+    console.log("this is hte cookie ", document.cookie);
     var path = location.pathname; 
     if(path !== '/'){
       var route = path.slice(path.indexOf('/') + 1);

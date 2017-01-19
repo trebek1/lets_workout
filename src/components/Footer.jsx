@@ -4,7 +4,7 @@ export default class Footer extends Component {
   	render() {
     return (	
         <div className="footer smooth">
-      		Footer
+      		<a className="personal" target="_blank" href="http://www.alextrz.com">About</a>
       	 </div>
     );
   }

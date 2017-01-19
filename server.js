@@ -90,7 +90,7 @@ app.post('/login', function(req, res){
 
 	db.User.authenticate(user.username, user.password, function(err, user){
 		req.login(user);
-		res.send('logged in!');
+		res.send(user);
 	});
 });
 

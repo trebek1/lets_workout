@@ -9,8 +9,14 @@ export default class LogIn extends Component {
       this.logout = this.logout.bind(this);
       this.checkHeadings = this.checkHeadings.bind(this);
       this.checkLogin = this.checkLogin.bind(this);
+      this.success = this.success.bind(this); 
       this.state = {loggedIn : false, logMessage: '', username: null}
-  	}	
+  	}
+
+
+    success(){
+      console.log("success fired.");
+    }
 
   	handleSubmit(e){
   		e.preventDefault(); 
@@ -58,6 +64,7 @@ export default class LogIn extends Component {
     }
 
   	render() {
+      console.log("this is props ", this.props);
 
       if(!this.state.loggedIn){
         return (  

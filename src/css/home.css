@@ -19,6 +19,18 @@ a{
 	text-decoration: none;
 }
 
+a.personal{
+	color:red;
+}
+
+a.personal:hover{
+	color:white;
+}
+
+a.personal:active{
+	color:blue;
+}
+
 li{
 	list-style: none;
 	height: 50px;

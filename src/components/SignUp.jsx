@@ -28,8 +28,8 @@ export default class SignUp extends Component {
         <div className="form-title"> Sign Up Here! </div>
         	<form onSubmit={this.handleSubmit}>
 	        	<input type="text" placeholder="username" name="username" />
-	        	<input type="text" placeholder="password" name="password" />
-            <input type="text" placeholder="confirm password" name="confirm" />
+	        	<input type="password" placeholder="password" name="password" />
+            <input type="password" placeholder="confirm password" name="confirm" />
 	        	<input type="submit" placeholder="submit"/>
         	</form>
       	 </div>

@@ -43,10 +43,8 @@ export default class Log extends Component {
       document.getElementById('foodDetail').innerHTML = fNotes;
 
       if(this.state.posted && this.state.id){
-        console.log("patch")
         addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id, 'patch'); 
       }else if(this.state.id){
-        console.log("post")
         addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id, 'post'); 
       }
 
@@ -56,6 +54,7 @@ export default class Log extends Component {
   	}
 
   	componentDidMount(){
+    
   		(function setDate(){
   			var date = new Date(); 
   			var today = date.getMonth() + 1 + '/' + date.getDate() + "/" + date.getFullYear();
@@ -64,6 +63,7 @@ export default class Log extends Component {
   		(function setButtonName(){
   			document.getElementsByClassName("daily-submit")[0].value="submit data for today";
   		})(); 
+      this.checkHeadings();
   	}
 
     checkHeadings(){
@@ -139,7 +139,7 @@ export default class Log extends Component {
         	</form>
         	<div className="today-results-container" style={styles}>
         		<div className="results-header input-header"> Today&apos;s Results</div>
-        			<table>
+        			<table className="table">
                 <thead>
       					  <tr>
       					    <th>Date</th>
@@ -170,8 +170,5 @@ export default class Log extends Component {
         	</div>
       </div>
     );
-  }
-   componentDidMount(){
-    this.checkHeadings();
   }
 }

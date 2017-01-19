@@ -38,7 +38,7 @@ render() {
 	if(this.state.loggedIn){
 		return (	
         <div className="dataHistory">
-      		<table>
+      		<table className="results-table">
                 <thead>
 				  <tr>
 				    <th>Date</th>

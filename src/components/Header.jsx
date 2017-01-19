@@ -9,7 +9,7 @@ export default class Header extends Component {
   	
   	constructor(props){
   		super(props); 
-  		this.selectCategory = this.selectCategory.bind(this); 
+      this.selectCategory = this.selectCategory.bind(this); 
   	}
 
   	selectCategory(event){

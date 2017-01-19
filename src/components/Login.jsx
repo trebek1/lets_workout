@@ -8,7 +8,8 @@ export default class LogIn extends Component {
   		this.handleSubmit = this.handleSubmit.bind(this); 
       this.logout = this.logout.bind(this);
       this.checkHeadings = this.checkHeadings.bind(this);
-      this.state = {loggedIn : false, logMessage: ''}
+      this.checkLogin = this.checkLogin.bind(this);
+      this.state = {loggedIn : false, logMessage: '', username: null}
   	}	
 
   	handleSubmit(e){
@@ -21,8 +22,9 @@ export default class LogIn extends Component {
       thisLogin(username.value,password.value); 
 
       this.setState({
-        loggedIn: true
-      })
+        loggedIn: true, 
+        username: username.value
+      }); 
 
   		username.value = ""; 
   		password.value = ""; 
@@ -47,21 +49,31 @@ export default class LogIn extends Component {
       }
     }
 
+    checkLogin(){
+      console.log("this.state.loggedin ", this.state.loggedIn)
+      if(this.state.loggedIn !== false){
+        var login = document.getElementsByName('login')[0].className +=  "login";
+        var signup = document.getElementsByName('signup')[0].className += "login";
+      }
+    }
+
   	render() {
+
       if(!this.state.loggedIn){
         return (  
         <div className="form-container">
         <div className="form-title"> Log In </div>
           <form onSubmit={this.handleSubmit}>
             <input type="text" placeholder="username" name="username" />
-            <input type="text" placeholder="password" name="password" />
+            <input type="password" placeholder="password" name="password" />
             <input type="submit" placeholder="submit"/>
           </form>
          </div>
     );    
       }else{
         return (
-          <div> 
+          <div > 
+            <h3> Hello {this.state.username}! Login Successful!</h3>
             <button onClick={this.logout}> Click Here to log out </button>
           </div>
 
@@ -70,5 +82,6 @@ export default class LogIn extends Component {
   }
   componentDidMount(){
     this.checkHeadings();
+    this.checkLogin();
   }
 }

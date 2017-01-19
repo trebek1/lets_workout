@@ -24,15 +24,34 @@ li{
 	height: 50px;
 }
 
+table td{
+	text-align: center;
+
+}
+
 ul{
 	margin: 0px;
 	padding: 0px;
 }
 
+.results-table{
+	display: inline-block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.login{
+	display: none;
+}
+
+.dataHistory{
+	 margin: 0 auto; 
+	 text-align: center;
+}
+
 .item a{
 	color: white;
 }
-
 
 .app-wrapper{
 	margin: 0 auto;

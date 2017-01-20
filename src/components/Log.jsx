@@ -13,8 +13,6 @@ export default class Log extends Component {
     componentWillMount(){
       var data = getSessionAndPostCheck.bind(this);
       data(); 
-      // var thisSession = getSession.bind(this); 
-      // thisSession(); 
     }	
 
   	handleSubmit(e){

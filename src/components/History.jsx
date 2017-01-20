@@ -6,7 +6,7 @@ export default class History extends Component {
 constructor(props){
 	super(props); 
 	this.mapDaysToPage = this.mapDaysToPage.bind(this); 
-  	this.state = {records: [], loggedIn: false, id: null}
+  	this.state = {records: []}
 }
 
 componentWillMount(){
@@ -35,7 +35,7 @@ mapDaysToPage(){
 }
 
 render() {
-	if(this.state.loggedIn){
+	if(this.props.loggedIn){
 		return (	
         <div className="dataHistory">
       		<table className="results-table">

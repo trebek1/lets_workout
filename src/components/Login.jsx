@@ -13,7 +13,6 @@ export default class LogIn extends Component {
       this.state = {loggedIn : false, logMessage: '', username: null}
   	}
 
-
     success(){
       console.log("success fired.");
     }
@@ -27,18 +26,15 @@ export default class LogIn extends Component {
 
       thisLogin(username.value,password.value); 
 
-      this.setState({
-        loggedIn: true, 
-        username: username.value
-      }); 
-
   		username.value = ""; 
   		password.value = ""; 
   	}
 
     logout(){
       var thisLogout = logout.bind(this); 
-      thisLogout(); 
+      thisLogout();
+      this.props.clearState(); 
+
     }
 
     componentWillMount(){
@@ -56,17 +52,15 @@ export default class LogIn extends Component {
     }
 
     checkLogin(){
-      console.log("this.state.loggedin ", this.state.loggedIn)
-      if(this.state.loggedIn !== false){
+      if(this.props.loggedIn !== false){
         var login = document.getElementsByName('login')[0].className +=  "login";
         var signup = document.getElementsByName('signup')[0].className += "login";
       }
     }
 
   	render() {
-      console.log("this is props ", this.props);
 
-      if(!this.state.loggedIn){
+      if(!this.props.loggedIn){
         return (  
         <div className="form-container">
         <div className="form-title"> Log In </div>
@@ -80,7 +74,7 @@ export default class LogIn extends Component {
       }else{
         return (
           <div > 
-            <h3> Hello {this.state.username}! Login Successful!</h3>
+            <h3> Hello {this.props.username}! Login Successful!</h3>
             <button onClick={this.logout}> Click Here to log out </button>
           </div>
 
@@ -89,6 +83,5 @@ export default class LogIn extends Component {
   }
   componentDidMount(){
     this.checkHeadings();
-    this.checkLogin();
   }
 }

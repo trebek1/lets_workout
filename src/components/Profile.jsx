@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {getSession} from '../utils/routes.jsx'; 
 
 export default class Profile extends Component {
 	constructor(props){
@@ -8,13 +7,8 @@ export default class Profile extends Component {
       this.state = {submitted: false, id: null}
   	}
 
-    componentWillMount(){
-      var thisSession = getSession.bind(this); 
-      thisSession(); 
-    }	
-
   	render() {
-  		if(this.state.loggedIn){
+  		if(this.props.loggedIn){
   			return (
     	<div className="profile-page">
     	<div className="profile-page-container">	

@@ -26,9 +26,16 @@ export default class Log extends Component {
   		    document.getElementsByName("run")[0].value = ""; 
   		var drinks = document.getElementsByClassName('drinks-list')[0],
   			  drink = drinks.options[drinks.selectedIndex].text;	 
+          if(isNaN(parseInt(drink))){
+            drink = 0; 
+          }
   			  document.getElementsByClassName('drinks-list')[0].selectedIndex = 0; 
+
   		var coffees = document.getElementsByClassName('coffee')[0],
   			  coffee = coffees.options[coffees.selectedIndex].text;	 
+          if(isNaN(parseInt(coffee))){
+            coffee = 0; 
+          }
   				document.getElementsByClassName('coffee')[0].selectedIndex = 0; 
   		var wNotes = document.getElementsByClassName('w-notes')[0].value;
   				document.getElementsByClassName('w-notes')[0].value = "";
@@ -50,12 +57,10 @@ export default class Log extends Component {
   		document.getElementsByClassName("weightDetail")[0].innerHTML = weight; 
       document.getElementById('workoutDetail').innerHTML = wNotes;
       document.getElementById('foodDetail').innerHTML = fNotes;
-      console.log("coffee on the front end ", coffee)
+      
       if(this.state.posted && this.props.id){
-        console.log('patch')
         addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.props.id, 'patch'); 
       }else if(this.props.id){
-        console.log('post')
         addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.props.id, 'post'); 
       }
 

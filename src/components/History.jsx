@@ -23,7 +23,7 @@ mapDaysToPage(){
 			return(
 			<tr key={i}>
 		    	<td>{item.date}</td>
-		    	<td>{item.weight}</td>
+		    	<td>{item.weight.toFixed(2)}</td>
 			 	<td>{item.miles}</td>
 			 	<td>{item.coffee}</td>
 			 	<td>{item.alcohol}</td>

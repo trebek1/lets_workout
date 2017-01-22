@@ -38,7 +38,7 @@ export default class Log extends Component {
           weight = parseFloat(weight);  
       
       if(typeof weight !== 'number' || weight < 20){
-        weight = 0; 
+        weight = 0.00; 
       }else{
         weight = weight.toFixed(2); 
       }

@@ -145,9 +145,15 @@ app.patch('/addDay', function(req,res){
     data.weight = 0;
   }
 
-   db.Day.update({'userId': data.id, 'date': data.date}, {$set:{weight: data.weight, alcohol: data.alcohol,coffee: data.coffee, miles: data.miles, workoutNotes: data.workoutNotes,foodNotes: data.foodNotes }},{ upsert: true }, function(err,day){
-    console.log(err, day); 
-    res.send(day); 
+  data.weight = parseFloat(data.weight).toFixed(2);
+
+  db.Day.update({'userId': data.id, 'date': data.date}, {$set:{weight: data.weight, alcohol: data.alcohol,coffee: data.coffee, miles: data.miles, workoutNotes: data.workoutNotes,foodNotes: data.foodNotes }},{ upsert: true }, function(err,day){
+    if(day){
+      res.send(day);   
+    }else{
+      res.send(err);
+    }
+    
   });       
 });    
 

@@ -21,8 +21,7 @@ daySchema.statics.addDay = function(date, weight, alcohol,coffee,miles,workoutNo
   if(alcohol === "Number of Drinks"){
     alcohol = 0; 
   }
-  console.log("this is coffee ", coffee);
-  console.log("this is weight to be aded ", weight, coffee)
+  
 	this.create({
 	  date: date,
 		weight: weight, 

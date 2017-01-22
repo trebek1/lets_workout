@@ -91,7 +91,7 @@ app.post('/today', function(req,res){
 
 app.post('/signup', function(req, res){
 	var info = req.body; 
-	db.User.find({email: info.username}, function(err,user){
+	db.User.find({username: info.username}, function(err,user){
 		if(user.length === 0){
 			db.User.createSecure(info.username, info.password, function(err, user){
         if(user){
@@ -101,7 +101,8 @@ app.post('/signup', function(req, res){
         }
 			});	
 		}else{
-			console.log("already in database");
+      res.send("already in database");
+    }
 		}
 	});
 });

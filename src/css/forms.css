@@ -41,6 +41,11 @@ tr td{
 	background: #A8A8A8;
 }
 
+.flag{
+	display: none;
+	padding: 10px;
+}
+
 
 .input-header{
 	font-size: 20px;

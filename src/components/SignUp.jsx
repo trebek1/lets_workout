@@ -6,6 +6,7 @@ export default class SignUp extends Component {
   	constructor(props){
   		super(props); 
   		this.handleSubmit = this.handleSubmit.bind(this); 
+      this.state = {message: null}
   	}	
 
   	handleSubmit(e){
@@ -13,8 +14,9 @@ export default class SignUp extends Component {
       var username = document.getElementsByName('username')[0];
       var password = document.getElementsByName('password')[0];
       var confirm = document.getElementsByName('confirm')[0];
-      
-  		signup(username.value,password.value,confirm.value);
+      var signUpHere = signup.bind(this);
+
+  		signUpHere(username.value,password.value,confirm.value);
   		
       username.value = ""; 
   		password.value = ""; 
@@ -23,6 +25,7 @@ export default class SignUp extends Component {
   	}
 
   	render() {
+
     return (	
         <div className="form-container">
         <div className="form-title"> Sign Up Here! </div>
@@ -32,7 +35,19 @@ export default class SignUp extends Component {
             <input type="password" placeholder="confirm password" name="confirm" />
 	        	<input type="submit" placeholder="submit"/>
         	</form>
+            <div className="flag">{this.state.message}</div>
       	 </div>
     );
+  }
+
+  componentDidUpdate(){
+    if(this.state.message){
+      document.getElementsByClassName('flag')[0].style.display =  "block";
+      if(this.state.message === "Error Username in Database"){
+        document.getElementsByClassName('flag')[0].style.color = 'red';
+      }else{
+        document.getElementsByClassName('flag')[0].style.color = 'green';
+      }
+    }
   }
 }

@@ -15,7 +15,26 @@ export function signup(username, password, confirm){
         'password': password,
         'confirm': confirm
       }
-    }); 
+    }).then((resp)=>{
+      console.log(resp)
+      console.log("here")
+      if(resp.data !== 'already in database'){
+        this.setState({
+          message: "Signup Successful!"
+        });
+      }else{
+        this.setState({
+          message: "Error Username in Database"
+        });
+      }
+      
+    }).catch((err)=>{
+      console.log(err)
+      this.setState({
+        message: "Error in Signup",
+        error: err
+      });
+    });
   }else{
       return "Passwords Do Not Match"; 
     } 	

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {login, getSession, logout} from '../utils/routes.jsx'; 
+import {login, logout} from '../utils/routes.jsx'; 
 
 export default class LogIn extends Component {
   	
@@ -9,13 +9,8 @@ export default class LogIn extends Component {
       this.logout = this.logout.bind(this);
       this.checkHeadings = this.checkHeadings.bind(this);
       this.checkLogin = this.checkLogin.bind(this);
-      this.success = this.success.bind(this); 
-      this.state = {loggedIn : false, logMessage: '', username: null}
+      this.state = {loggedIn : this.props.loggedIn, logMessage: '', username: this.props.username}
   	}
-
-    success(){
-      console.log("success fired.");
-    }
 
   	handleSubmit(e){
   		e.preventDefault(); 
@@ -35,11 +30,6 @@ export default class LogIn extends Component {
       thisLogout();
       this.props.clearState(); 
 
-    }
-
-    componentWillMount(){
-      var sessionHere = getSession.bind(this); 
-      sessionHere(); 
     }
 
     checkHeadings(){

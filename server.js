@@ -4,6 +4,7 @@ var express = require('express');
 var config = require('./webpack.config');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 var db = require('./models');
 var app = express();
 var compiler = webpack(config);
@@ -40,6 +41,8 @@ app.use("/", function (req, res, next) {
   }
   next(); 
 });
+
+app.use(favicon(__dirname + '/assets/media/stock/robotron.png'));
 
 app.use(require('webpack-dev-middleware')(compiler, {publicPath: config.output.publicPath}));
 app.use(require('webpack-hot-middleware')(compiler));

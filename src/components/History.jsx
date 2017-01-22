@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getRecordsAndSession, getSession} from '../utils/routes'; 
+import {getRecords} from '../utils/routes'; 
 
 export default class History extends Component {
   	
@@ -10,8 +10,10 @@ constructor(props){
 }
 
 componentWillMount(){
-	var data = getRecordsAndSession.bind(this);
-	data();
+	if(this.props.loggedIn && this.props.id){
+		var data = getRecords.bind(this);
+		data(this.props.id);
+	}
 }
 
 mapDaysToPage(){

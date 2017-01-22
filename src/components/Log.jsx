@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import {addDay, getSession, getSessionAndPostCheck} from '../utils/routes.jsx'; 
+import {addDay, postAlready} from '../utils/routes.jsx'; 
 
 export default class Log extends Component {
   	
   	constructor(props){
   		super(props); 
   		this.handleSubmit = this.handleSubmit.bind(this); 
-      this.state = {submitted: false, id: null, posted: false}
+      this.state = {submitted: false, posted: false}
       this.checkHeadings = this.checkHeadings.bind(this);
   	}
 
     componentWillMount(){
-      var data = getSessionAndPostCheck.bind(this);
-      data(); 
+
+      if(this.props.id && this.props.loggedIn){
+        var didPost = postAlready.bind(this); 
+        didPost(this.props.id);  
+      }
+      
     }	
 
   	handleSubmit(e){
@@ -39,11 +43,11 @@ export default class Log extends Component {
   		document.getElementsByClassName("weightDetail")[0].innerHTML = weight; 
       document.getElementById('workoutDetail').innerHTML = wNotes;
       document.getElementById('foodDetail').innerHTML = fNotes;
-
-      if(this.state.posted && this.state.id){
-        addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id, 'patch'); 
-      }else if(this.state.id){
-        addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.state.id, 'post'); 
+      
+      if(this.state.posted && this.props.id){
+        addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.props.id, 'patch'); 
+      }else if(this.props.id){
+        addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.props.id, 'post'); 
       }
 
       this.setState({

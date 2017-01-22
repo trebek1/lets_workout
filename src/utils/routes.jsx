@@ -36,6 +36,9 @@ export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodN
         'foodNotes': foodNotes, 
         'id': id
       }
+    }).then((response)=>{
+    }).catch((error)=>{
+      console.log("this is err ", error);
     }); 
   }
 
@@ -49,9 +52,7 @@ export function login(username, password){
         'password': password
       }
     }).then((response)=>{
-        this.success(); 
         this.props.successLog(response.data._id, username);
-      
         this.setState({
           loggedIn: true,
           logMessage: "Successfully Logged In!"
@@ -59,8 +60,8 @@ export function login(username, password){
     }).catch((error)=>{
         this.setState({
           logMessage: "Username and Password not Valid"
-        })
-    })
+        });
+    });
 }
 export function getSession(){
   axios({
@@ -100,63 +101,51 @@ export function logout(){
     })
 }
 
-export function getRecordsAndSession(){
-  
-  axios.get('/session').then((data)=>{
-    var id = data.data._id
-    axios({
-      method: 'post',
-      url: '/days',
-      data: {
-        'id': id
-      }
-      }).then((days)=>{
-          this.setState({
-            records: days.data,
-            loggedIn: id ? true:false,
-            id: id
-          })
-      })  
-  }).catch(error => console.log(error));
+export function getRecords(userId){
+  var id = userId;
+  axios({
+    method: 'post',
+    url: '/days',
+    data: {
+      'id': id
+    }
+    }).then((days)=>{
+        this.setState({
+          records: days.data,
+          loggedIn: id ? true:false,
+          id: id
+        });
+    }).catch((error) => {
+      this.setState({
+        logMessage: "A System Error Occured"
+      });
+    });  
 }
 
-export function getSessionAndPostCheck(){
+export function postAlready(userId){
   
-  axios.get('/session').then((data)=>{
-    if(data){
-      var id = data.data._id;
-      var date = new Date();
-      var today = date.getMonth() + 1 + '/' + date.getDate() + "/" + date.getFullYear();
-    axios({
-      method: 'post',
-      url: '/today',
-      data: {
-        'id': id, 
-        'date': today
-      }
-      }).then((info)=>{
-        
-        if(info.data.length > 0){
-          this.setState({
-            posted: true,
-            loggedIn: true,
-            id: id
-          }); 
-        }else{
-          this.setState({
-            posted: false,
-            loggedIn: true,
-            id: id
-          });
-        }
-      });    
+  var id = userId; 
+  var date = new Date();
+  var today = date.getMonth() + 1 + '/' + date.getDate() + "/" + date.getFullYear();
+  axios({
+    method: 'post',
+    url: '/today',
+    data: {
+      'id': id, 
+      'date': today
+    }
+  }).then((info)=>{
+    
+    if(info.data.length > 0){
+      this.setState({
+        posted: true
+      }); 
     }else{
       this.setState({
-        loggedIn: false
+        posted: false
       });
     }
-    
-  }).catch(error => console.log(error));
+  });    
 }
 
 

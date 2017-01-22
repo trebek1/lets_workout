@@ -32,7 +32,7 @@ export default class Wrapper extends Component {
         <div className="app-wrapper">
 	      	<Header clearState={this.clearState} loggedIn={this.state.loggedIn} id={this.state.id} username={this.state.username}/>
 	      		<div className="content smooth">
-	      			 {React.cloneElement(this.props.children, { username: this.state.username, loggedIn: this.state.loggedIn, successLog: this.successLog, clearState: this.clearState })}
+	      			 {React.cloneElement(this.props.children, { id: this.state.id, username: this.state.username, loggedIn: this.state.loggedIn, successLog: this.successLog, clearState: this.clearState })}
 	      		</div>
 	      	<Footer/>
       	</div>

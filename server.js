@@ -51,16 +51,24 @@ app.use(bodyParser.json());
 
 app.get('/session', function(req, res){
 	req.currentUser(function(err, user){
-		res.send(user);
+    if(user){
+      res.send(user);  
+    }else{
+      res.send(err);
+    }
+		
 	}); 
 });
 
 app.post('/days', function(req,res){
   var data = req.body; 
-  console.log("this is data ", data)
   db.Day.find({'userId':data.id}, function(err, data){
-    console.log("this is data ", data)
-    res.send(data);
+    if(data){
+      res.send(data);  
+    }else{
+      res.send(err);
+    }
+    
   })
   
 
@@ -70,7 +78,12 @@ app.post('/today', function(req,res){
   var data = req.body; 
   
   db.Day.find({'userId':data.id,'date':data.date}, function(err, data){
-    res.send(data);
+    if(data){
+      res.send(data);  
+    }else{
+      res.send(err); 
+    }
+    
   })
   
 
@@ -81,6 +94,11 @@ app.post('/signup', function(req, res){
 	db.User.find({email: info.username}, function(err,user){
 		if(user.length === 0){
 			db.User.createSecure(info.username, info.password, function(err, user){
+        if(user){
+          res.send(user);
+        }else{
+          res.send(err);
+        }
 			});	
 		}else{
 			console.log("already in database");
@@ -92,25 +110,45 @@ app.post('/login', function(req, res){
 	var user = req.body;
 
 	db.User.authenticate(user.username, user.password, function(err, user){
-		req.login(user);
-		res.send(user);
+    if(user){
+      req.login(user);
+      res.send(user);  
+    }else{
+      res.send(err);
+    }
 	});
 });
 
 app.post('/addDay', function(req,res){
   var data = req.body; 
   db.Day.addDay(data.date, data.weight, data.alcohol,data.coffee, data.miles,data.workoutNotes, data.foodNotes, data.id, function(err, day){
-    res.send('Day Added');
+    if(day){
+      res.send(day);  
+    }else{
+      res.send(err);
+    }
+    
   });    
 }); 
 
 app.patch('/addDay', function(req,res){
   var data = req.body;
-  console.log("this is data", data);
-  db.Day.update({'userId': data.id, 'date': data.date}, {$set:{weight: data.weight, alcohol: data.alcohol,coffee: data.coffee, miles: data.miles, workoutNotes: data.workoutNotes,foodNotes: data.foodNotes }},{ upsert: true }, function(err,day){
+  if(isNaN(parseInt(data.coffee))){
+    data.coffee = 0; 
+  }
+
+  if(isNaN(parseInt(data.alcohol))){
+    data.alcohol = 0;
+  }
+
+  if(isNaN(parseInt(data.weight))){
+    data.weight = 0;
+  }
+
+   db.Day.update({'userId': data.id, 'date': data.date}, {$set:{weight: data.weight, alcohol: data.alcohol,coffee: data.coffee, miles: data.miles, workoutNotes: data.workoutNotes,foodNotes: data.foodNotes }},{ upsert: true }, function(err,day){
     console.log(err, day); 
     res.send(day); 
-  });    
+  });       
 });    
 
 app.get('/logout', function(req, res){

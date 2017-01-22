@@ -34,8 +34,15 @@ export default class Log extends Component {
   				document.getElementsByClassName('w-notes')[0].value = "";
   		var fNotes = document.getElementsByClassName('f-notes')[0].value;
   				document.getElementsByClassName('f-notes')[0].value = ""; 
-      var weight = document.getElementsByName('weight')[0].value; 
-          document.getElementsByName('weight')[0].value = ""; 
+      var weight = document.getElementsByName('weight')[0].value;
+          weight = parseFloat(weight);  
+      
+      if(typeof weight !== 'number' || weight < 20){
+        weight = 0; 
+      }else{
+        weight = weight.toFixed(2); 
+      }
+      document.getElementsByName('weight')[0].value = ""; 
       document.getElementsByClassName('dateDetail')[0].innerHTML = date;
   		document.getElementsByClassName('drinksDetail')[0].innerHTML = drink;
   		document.getElementsByClassName('coffeeDetail')[0].innerHTML = coffee;
@@ -43,10 +50,12 @@ export default class Log extends Component {
   		document.getElementsByClassName("weightDetail")[0].innerHTML = weight; 
       document.getElementById('workoutDetail').innerHTML = wNotes;
       document.getElementById('foodDetail').innerHTML = fNotes;
-      
+      console.log("coffee on the front end ", coffee)
       if(this.state.posted && this.props.id){
+        console.log('patch')
         addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.props.id, 'patch'); 
       }else if(this.props.id){
+        console.log('post')
         addDay(date, weight, drink, coffee, miles, wNotes, fNotes, this.props.id, 'post'); 
       }
 
@@ -96,7 +105,7 @@ export default class Log extends Component {
         		<div className="input-header">Today&apos;s Date</div>
 	        	<input className="solid-date" type="text" placeholder="Date" name="date" readOnly />
 	        	<div className="input-header">Weight</div>
-		        	<input type="number" placeholder="Weight" name="weight" />
+		        	<input placeholder="Weight" name="weight" />
 	        	<div className="drinks">
 		        	<div className="input-header">Beverages</div>
 		        	<select className="drinks-list">

@@ -13,6 +13,7 @@ var daySchema = new mongoose.Schema({
 });
 
 daySchema.statics.addDay = function(date, weight, alcohol,coffee,miles,workoutNotes,foodNotes,id,cb){
+  
   if(coffee === "Coffee"){
     coffee = 0; 
   }
@@ -20,8 +21,10 @@ daySchema.statics.addDay = function(date, weight, alcohol,coffee,miles,workoutNo
   if(alcohol === "Number of Drinks"){
     alcohol = 0; 
   }
-  	this.create({
-	    date: date,
+  console.log("this is coffee ", coffee);
+  console.log("this is weight to be aded ", weight, coffee)
+	this.create({
+	  date: date,
 		weight: weight, 
 		alcohol: alcohol, 
 		coffee: coffee, 
@@ -29,7 +32,7 @@ daySchema.statics.addDay = function(date, weight, alcohol,coffee,miles,workoutNo
 		workoutNotes: workoutNotes, 
 		foodNotes: foodNotes, 
 		userId: id
-    }, cb)
+  }, cb)
 };
 
 var Day = mongoose.model("Day", daySchema);

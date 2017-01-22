@@ -32,16 +32,16 @@ userSchema.statics.encryptPassword = function (password) {
 
 userSchema.statics.authenticate = function(username, password, cb) {
   this.find({
-     username: username
+     username: username,
     }, 
     function(err, user){
       
       if (user.length === 0){
-        console.log("no user")
+        return cb("no username in database");
       } else if (user[0].checkPassword(password)){
         cb(null, user[0]);
       }else{
-        console.log('err');
+        return cb("incorrect password"); 
       }
     });
  };

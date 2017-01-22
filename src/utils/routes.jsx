@@ -71,14 +71,28 @@ export function login(username, password){
         'password': password
       }
     }).then((response)=>{
-        this.props.successLog(response.data._id, username);
-        this.setState({
-          loggedIn: true,
-          logMessage: "Successfully Logged In!"
+      console.log("response ", response);
+        if(response.data === "no username in database"){
+          this.setState({
+            loggedIn: true,
+            message: "No username in database"
+          })
+        }else if(response.data ==="incorrect password"){
+          
+          this.setState({
+            message: "password is incorrect"
         });
+        }else{
+          this.props.successLog(response.data._id, username);
+          this.setState({
+          loggedIn: true,
+          message: "Successfully Logged In!"
+        });
+        }
     }).catch((error)=>{
+      console.log("error ", error);
         this.setState({
-          logMessage: "Username and Password not Valid"
+          message: "an error occured"
         });
     });
 }
@@ -111,6 +125,7 @@ export function logout(){
     }).then((response)=>{
         this.setState({
           loggedIn: false,
+          message: '',
           logMessage: "Successfully Logged Out!"
         });
     }).catch((error)=>{

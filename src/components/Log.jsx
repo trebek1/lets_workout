@@ -99,9 +99,9 @@ export default class Log extends Component {
       }
     return (	
       <div className="form-container">
+        <div id="people">
         <div className="form-title"> Add Information for Today </div>
         	<form onSubmit={this.handleSubmit}>
-
         		<div className="input-header">Today&apos;s Date</div>
 	        	<input className="solid-date" type="text" placeholder="Date" name="date" readOnly />
 	        	<div className="input-header">Weight</div>
@@ -148,6 +148,7 @@ export default class Log extends Component {
 		        	<input className="daily-submit" placeholder="submit" type="submit"></input>	
 		        </div>
         	</form>
+          </div>
         	<div className="today-results-container" style={styles}>
         		<div className="results-header input-header"> Today&apos;s Results</div>
         			<table className="table">

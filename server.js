@@ -101,9 +101,8 @@ app.post('/signup', function(req, res){
         }
 			});	
 		}else{
-      res.send("already in database");
+      res.send("internal error");
     }
-		}
 	});
 });
 

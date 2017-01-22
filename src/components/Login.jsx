@@ -9,7 +9,7 @@ export default class LogIn extends Component {
       this.logout = this.logout.bind(this);
       this.checkHeadings = this.checkHeadings.bind(this);
       this.checkLogin = this.checkLogin.bind(this);
-      this.state = {loggedIn : this.props.loggedIn, logMessage: '', username: this.props.username}
+      this.state = {loggedIn : this.props.loggedIn, logMessage: '', username: this.props.username, message: null}
   	}
 
   	handleSubmit(e){
@@ -59,6 +59,7 @@ export default class LogIn extends Component {
             <input type="password" placeholder="password" name="password" />
             <input type="submit" placeholder="submit"/>
           </form>
+          <div className="flag">{this.state.message}</div>
          </div>
     );    
       }else{
@@ -73,5 +74,13 @@ export default class LogIn extends Component {
   }
   componentDidMount(){
     this.checkHeadings();
+  }
+  componentDidUpdate(){
+    if(this.state.message){
+      if(document.getElementsByClassName('flag').length > 0){
+        document.getElementsByClassName('flag')[0].style.display =  "block";
+        document.getElementsByClassName('flag')[0].style.color = 'red';  
+      }
+    }
   }
 }

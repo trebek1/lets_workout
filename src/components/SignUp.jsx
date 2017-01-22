@@ -43,7 +43,7 @@ export default class SignUp extends Component {
   componentDidUpdate(){
     if(this.state.message){
       document.getElementsByClassName('flag')[0].style.display =  "block";
-      if(this.state.message === "Error Username in Database"){
+      if(this.state.message !== "Username created successfully!"){
         document.getElementsByClassName('flag')[0].style.color = 'red';
       }else{
         document.getElementsByClassName('flag')[0].style.color = 'green';

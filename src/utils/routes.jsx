@@ -5,7 +5,6 @@ export function test(){
 }
 
 export function signup(username, password, confirm){
-
   if(password === confirm){
     return axios({
       method: 'post',
@@ -16,32 +15,34 @@ export function signup(username, password, confirm){
         'confirm': confirm
       }
     }).then((resp)=>{
-      console.log(resp)
-      console.log("here")
-      if(resp.data !== 'already in database'){
+      if(resp.data === 'already in database'){
         this.setState({
-          message: "Signup Successful!"
+          message: "username already taken"
+        });
+      }else if(resp.data === "Error: username already taken"){
+        this.setState({
+          message: "Error: username already taken"
         });
       }else{
         this.setState({
-          message: "Error Username in Database"
+          message: "Username created successfully!"
         });
       }
       
     }).catch((err)=>{
-      console.log(err)
       this.setState({
         message: "Error in Signup",
         error: err
       });
     });
   }else{
-      return "Passwords Do Not Match"; 
-    } 	
+    this.setState({
+      message: "Passwords Do Not Match" 
+    });
+  } 	
 }
 
 export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodNotes, id, method){
-
     return axios({
       method: method,
       url: '/addDay',
@@ -62,7 +63,6 @@ export function addDay(date, weight, alcohol, coffee, miles, workoutNotes, foodN
   }
 
 export function login(username, password){
-  
     return axios({
       method: 'post',
       url: '/login',
@@ -71,14 +71,12 @@ export function login(username, password){
         'password': password
       }
     }).then((response)=>{
-      console.log("response ", response);
         if(response.data === "no username in database"){
           this.setState({
             loggedIn: true,
             message: "No username in database"
           })
         }else if(response.data ==="incorrect password"){
-          
           this.setState({
             message: "password is incorrect"
         });
@@ -90,7 +88,6 @@ export function login(username, password){
         });
         }
     }).catch((error)=>{
-      console.log("error ", error);
         this.setState({
           message: "an error occured"
         });
@@ -108,7 +105,6 @@ export function getSession(){
       id: response.data._id
     });  
     }
-  
     return response; 
   }).catch((error)=>{
     console.log('error', error)
@@ -117,11 +113,9 @@ export function getSession(){
 }
 
 export function logout(){
-  
     return axios({
       method: 'get',
       url: '/logout'
-      
     }).then((response)=>{
         this.setState({
           loggedIn: false,
@@ -157,7 +151,6 @@ export function getRecords(userId){
 }
 
 export function postAlready(userId){
-  
   var id = userId; 
   var date = new Date();
   var today = date.getMonth() + 1 + '/' + date.getDate() + "/" + date.getFullYear();

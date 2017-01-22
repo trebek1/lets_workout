@@ -43,7 +43,6 @@ app.use("/", function (req, res, next) {
 });
 
 app.use(favicon(__dirname + '/assets/media/stock/robotron.png'));
-
 app.use(require('webpack-dev-middleware')(compiler, {publicPath: config.output.publicPath}));
 app.use(require('webpack-hot-middleware')(compiler));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,7 +55,6 @@ app.get('/session', function(req, res){
     }else{
       res.send(err);
     }
-		
 	}); 
 });
 
@@ -68,10 +66,7 @@ app.post('/days', function(req,res){
     }else{
       res.send(err);
     }
-    
-  })
-  
-
+  });
 }); 
 
 app.post('/today', function(req,res){
@@ -83,10 +78,7 @@ app.post('/today', function(req,res){
     }else{
       res.send(err); 
     }
-    
-  })
-  
-
+  });
 }); 
 
 app.post('/signup', function(req, res){
@@ -101,14 +93,13 @@ app.post('/signup', function(req, res){
         }
 			});	
 		}else{
-      res.send("internal error");
+      res.send("Error: username already taken");
     }
 	});
 });
 
 app.post('/login', function(req, res){
 	var user = req.body;
-
 	db.User.authenticate(user.username, user.password, function(err, user){
     if(user){
       req.login(user);
@@ -127,7 +118,6 @@ app.post('/addDay', function(req,res){
     }else{
       res.send(err);
     }
-    
   });    
 }); 
 
@@ -136,24 +126,19 @@ app.patch('/addDay', function(req,res){
   if(isNaN(parseInt(data.coffee))){
     data.coffee = 0; 
   }
-
   if(isNaN(parseInt(data.alcohol))){
     data.alcohol = 0;
   }
-
   if(isNaN(parseInt(data.weight))){
     data.weight = 0;
   }
-
   data.weight = parseFloat(data.weight).toFixed(2);
-
   db.Day.update({'userId': data.id, 'date': data.date}, {$set:{weight: data.weight, alcohol: data.alcohol,coffee: data.coffee, miles: data.miles, workoutNotes: data.workoutNotes,foodNotes: data.foodNotes }},{ upsert: true }, function(err,day){
     if(day){
       res.send(day);   
     }else{
       res.send(err);
     }
-    
   });       
 });    
 

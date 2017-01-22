@@ -28,7 +28,6 @@ export function signup(username, password, confirm){
           message: "Username created successfully!"
         });
       }
-      
     }).catch((err)=>{
       this.setState({
         message: "Error in Signup",
@@ -99,7 +98,6 @@ export function getSession(){
     url: '/session'
   }).then((response)=>{
     if(response.data){
-
       this.setState({
       loggedIn : true,
       id: response.data._id
@@ -162,7 +160,6 @@ export function postAlready(userId){
       'date': today
     }
   }).then((info)=>{
-    
     if(info.data.length > 0){
       this.setState({
         posted: true

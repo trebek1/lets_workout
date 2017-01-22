@@ -11,12 +11,10 @@ export default class Log extends Component {
   	}
 
     componentWillMount(){
-
       if(this.props.id && this.props.loggedIn){
         var didPost = postAlready.bind(this); 
         didPost(this.props.id);  
       }
-      
     }	
 
   	handleSubmit(e){

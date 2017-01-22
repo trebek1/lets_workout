@@ -50,4 +50,9 @@ export default class SignUp extends Component {
       }
     }
   }
+  componentWillUnmount(){
+    this.setState({
+      message: null
+    });
+  }
 }
